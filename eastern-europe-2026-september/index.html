@@ -7,6 +7,7 @@
     - 2026-07-06 v2: 일자별 일정표 도시명에 구글맵 링크 추가
     - 2026-07-06 v3: 검토 메모 섹션에 계획 점검 메모 2건 추가 (확인된 사실/리스크, 추가·조정 검토 코스)
     - 2026-07-06 v4: 제목을 '2026년 9월 동유럽 여행'으로 변경, 요약 패널의 공개 범위/업데이트 항목 삭제
+    - 2026-07-06 v5: 상단 우측 요약 카드 제거, 일자별 일정표 하단에 방문 도시 경로 지도 이미지 추가
 -->
 <html lang="ko">
 <head>
@@ -87,12 +88,12 @@
       gap: 12px;
     }
 
+    /* 2026-07-06 수정: 우측 요약 카드 제거로 단일 컬럼 구성 */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      grid-template-columns: 1fr;
       gap: 28px;
       align-items: stretch;
-      min-height: 62vh;
     }
 
     .hero-copy {
@@ -295,6 +296,27 @@
       text-decoration-color: var(--forest);
     }
 
+    /* 2026-07-06 추가: 일정표 하단 경로 지도 */
+    .route-map {
+      margin: 20px 0 0;
+    }
+
+    .route-map img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(222, 214, 200, 0.92);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(38, 50, 56, 0.06);
+    }
+
+    .route-map figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
     .summary-list {
       display: grid;
       gap: 10px;
@@ -489,19 +511,6 @@
           </p>
         </div>
 
-        <aside class="hero-panel" aria-label="여행 요약">
-          <div class="stamp" aria-hidden="true">EASTERN<br />EUROPE</div>
-          <ul class="meta-list">
-            <li>
-              <strong>일정</strong>
-              <span>2026년 9월 19일 토요일 08:10 출발 ~ 10월 3일 토요일 10:55 도착 예정</span>
-            </li>
-            <li>
-              <strong>지역</strong>
-              <span>폴란드, 슬로베니아, 크로아티아 중심 루트</span>
-            </li>
-          </ul>
-        </aside>
       </section>
 
       <section class="section" id="plan" aria-labelledby="plan-title">
@@ -640,6 +649,15 @@
             </tbody>
           </table>
         </div>
+        <!-- 2026-07-06 추가: 방문 도시 경로 지도 -->
+        <figure class="route-map">
+          <img
+            src="images/route-map-20260706.png"
+            alt="여행 경로 지도: 바르샤바, 브로츠와프, 크라쿠프, 류블랴나, 블레드, 플리트비체 국립공원, 스플리트, 두브로브니크 위치가 핀으로 표시된 동유럽 지도"
+            loading="lazy"
+          />
+          <figcaption>방문 도시 경로 지도 — 폴란드에서 크로아티아까지</figcaption>
+        </figure>
       </section>
 
       <section class="section" id="transport" aria-labelledby="transport-title">
