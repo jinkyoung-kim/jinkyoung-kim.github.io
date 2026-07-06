@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <!--
   작성일: 2026-07-06
-  버전: v1 (1차 초안)
+  버전: v2 (1차 초안)
   설명: 2026년 9월 동유럽 여행 예정 기록 페이지
+  변경이력:
+    - 2026-07-06 v2: 일자별 일정표 도시명에 구글맵 링크 추가
 -->
 <html lang="ko">
 <head>
@@ -278,6 +280,19 @@
       font-weight: 800;
     }
 
+    /* 2026-07-06 추가: 일정표 도시명 구글맵 링크 스타일 */
+    .city a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(45, 106, 95, 0.45);
+      text-underline-offset: 3px;
+    }
+
+    .city a:hover {
+      color: var(--forest);
+      text-decoration-color: var(--forest);
+    }
+
     .summary-list {
       display: grid;
       gap: 10px;
@@ -530,79 +545,79 @@
             <tbody>
               <tr>
                 <td>9/19 토</td>
-                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
                 <td>인천에서 바르샤바로 항공 이동</td>
                 <td>14:05 도착 예정, 올드타운 산책</td>
               </tr>
               <tr>
                 <td>9/20 일</td>
-                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
                 <td>현지 체류</td>
                 <td>왕궁, 올드타운, 와지엔키 공원</td>
               </tr>
               <tr>
                 <td>9/21 월</td>
-                <td><span class="city">크라쿠프</span><br />폴란드</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Krakow,Poland" target="_blank" rel="noopener">크라쿠프</a></span><br />폴란드</td>
                 <td>바르샤바에서 고속열차, 약 2시간 20분</td>
                 <td>오후 구시가지 관광</td>
               </tr>
               <tr>
                 <td>9/22 화</td>
-                <td><span class="city">크라쿠프</span><br />폴란드</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Krakow,Poland" target="_blank" rel="noopener">크라쿠프</a></span><br />폴란드</td>
                 <td>현지 체류</td>
                 <td>비엘리치카 소금광산 또는 아우슈비츠</td>
               </tr>
               <tr>
                 <td>9/23 수</td>
-                <td><span class="city">류블랴나</span><br />슬로베니아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ljubljana,Slovenia" target="_blank" rel="noopener">류블랴나</a></span><br />슬로베니아</td>
                 <td>크라쿠프에서 환승 항공</td>
                 <td>늦은 오후 도착 예상</td>
               </tr>
               <tr>
                 <td>9/24 목</td>
-                <td><span class="city">류블랴나 / 블레드</span><br />슬로베니아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ljubljana,Slovenia" target="_blank" rel="noopener">류블랴나</a> / <a href="https://www.google.com/maps/search/?api=1&amp;query=Bled,Slovenia" target="_blank" rel="noopener">블레드</a></span><br />슬로베니아</td>
                 <td>렌터카 수령 후 블레드 호수 왕복, 약 45분</td>
                 <td>블레드 호수 관광</td>
               </tr>
               <tr>
                 <td>9/25 금</td>
-                <td><span class="city">플리트비체</span><br />크로아티아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Plitvice+Lakes+National+Park,Croatia" target="_blank" rel="noopener">플리트비체</a></span><br />크로아티아</td>
                 <td>류블랴나에서 렌터카 이동, 약 3시간</td>
                 <td>국립공원 관광</td>
               </tr>
               <tr>
                 <td>9/26 토</td>
-                <td><span class="city">스플리트</span><br />크로아티아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Split,Croatia" target="_blank" rel="noopener">스플리트</a></span><br />크로아티아</td>
                 <td>플리트비체에서 렌터카 이동, 약 2.5~3시간</td>
                 <td>해안도로 드라이브</td>
               </tr>
               <tr>
                 <td>9/27 일</td>
-                <td><span class="city">스플리트</span><br />크로아티아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Split,Croatia" target="_blank" rel="noopener">스플리트</a></span><br />크로아티아</td>
                 <td>현지 체류</td>
                 <td>디오클레티아누스 궁전, 리바 해변 산책</td>
               </tr>
               <tr>
                 <td>9/28 월</td>
-                <td><span class="city">두브로브니크</span><br />크로아티아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubrovnik,Croatia" target="_blank" rel="noopener">두브로브니크</a></span><br />크로아티아</td>
                 <td>스플리트에서 렌터카 이동, 약 3시간</td>
                 <td>성벽 야경</td>
               </tr>
               <tr>
                 <td>9/29 화</td>
-                <td><span class="city">두브로브니크</span><br />크로아티아</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubrovnik,Croatia" target="_blank" rel="noopener">두브로브니크</a></span><br />크로아티아</td>
                 <td>현지 체류</td>
                 <td>성벽, 케이블카, 올드타운</td>
               </tr>
               <tr>
                 <td>9/30 수</td>
-                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
                 <td>두브로브니크에서 항공 이동 예정</td>
                 <td>렌터카 반납 후 항공 이동, 출발지는 비교 후 확정</td>
               </tr>
               <tr>
                 <td>10/1 목</td>
-                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
                 <td>현지 체류</td>
                 <td>쇼핑, 기념품 구매, 여유 일정</td>
               </tr>
