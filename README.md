@@ -13,6 +13,7 @@
 - 배포 주소: https://jinkyoung-kim.github.io
 - `main` 브랜치에 push하면 GitHub Pages가 자동으로 배포합니다.
 - 메인 페이지: `index.html`
+- 여행 기록 페이지: `eastern-europe-2026-september/index.html`
 - 저장소 공개 범위: Public
 - 현재 구성: 단일 HTML/CSS 파일 기반 정적 페이지
 
@@ -21,3 +22,4 @@
 - 기본 소개 문구: `index.html`의 `lead`, `About` 영역 수정
 - 링크 추가: `index.html`의 `link-list` 영역에 항목 추가
 - 스타일 변경: `index.html` 상단 `<style>` 영역 수정
+- 2026년 9월 동유럽 여행 기록 수정: `eastern-europe-2026-september/index.html` 수정
