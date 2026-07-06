@@ -237,6 +237,65 @@
       padding-left: 18px;
     }
 
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(222, 214, 200, 0.92);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.78);
+      box-shadow: 0 10px 28px rgba(38, 50, 56, 0.06);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--forest);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .city {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .summary-list li {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .summary-list strong {
+      color: var(--ink);
+    }
+
     .timeline {
       display: grid;
       gap: 14px;
@@ -377,6 +436,8 @@
       <a href="/">Jinkyoung Kim</a>
       <nav class="nav-links" aria-label="여행 기록 바로가기">
         <a href="#plan">계획</a>
+        <a href="#itinerary">일정표</a>
+        <a href="#transport">이동</a>
         <a href="#journal">후기</a>
         <a href="#photos">사진</a>
         <a href="/">홈</a>
@@ -389,8 +450,9 @@
           <p class="eyebrow">Travel Note · September 2026</p>
           <h1 id="hero-title">2026년 9월 동유럽 여행 기록</h1>
           <p class="lead">
-            여행 전에는 계획과 준비 과정을, 여행 중과 이후에는 후기와 사진을 남기는 개인 기록 페이지입니다.
-            주소를 아는 지인도 함께 볼 수 있도록 공개 링크로 운영합니다.
+            2026년 9월 19일부터 10월 3일까지, 폴란드와 슬로베니아,
+            크로아티아를 잇는 여행 계획을 정리한 페이지입니다.
+            여행 전에는 계획과 준비 과정을, 여행 후에는 후기와 사진을 이어서 남깁니다.
           </p>
         </div>
 
@@ -399,11 +461,11 @@
           <ul class="meta-list">
             <li>
               <strong>일정</strong>
-              <span>2026년 9월 예정</span>
+              <span>2026년 9월 19일 토요일 08:10 출발 ~ 10월 3일 토요일 10:55 도착 예정</span>
             </li>
             <li>
               <strong>지역</strong>
-              <span>동유럽 주요 도시 중심, 세부 루트는 업데이트 예정</span>
+              <span>폴란드, 슬로베니아, 크로아티아 중심 루트</span>
             </li>
             <li>
               <strong>공개 범위</strong>
@@ -411,7 +473,7 @@
             </li>
             <li>
               <strong>업데이트</strong>
-              <span>계획, 예약, 현지 메모, 후기, 사진을 순차 반영</span>
+              <span>Notion export 기반 일정 반영, 예약 확정 내용은 필요 시 추가</span>
             </li>
           </ul>
         </aside>
@@ -420,91 +482,201 @@
       <section class="section" id="plan" aria-labelledby="plan-title">
         <div class="section-header">
           <h2 id="plan-title">여행 계획</h2>
-          <p class="section-note">아직 여행 전 단계라 세부 일정과 예약 정보는 확정되는 대로 채워갑니다.</p>
+          <p class="section-note">첨부된 Notion export 내용을 바탕으로 1차 루트를 정리했습니다.</p>
         </div>
         <div class="grid">
           <article class="card">
-            <h3>가고 싶은 곳</h3>
+            <h3>방문 국가</h3>
             <ul>
-              <li>프라하, 빈, 부다페스트 등 후보 도시 정리</li>
-              <li>도시별 머무는 기간과 이동 동선 검토</li>
-              <li>미술관, 카페, 야경 명소, 산책 코스 메모</li>
+              <li>폴란드: 바르샤바, 크라쿠프</li>
+              <li>슬로베니아: 류블랴나, 블레드</li>
+              <li>크로아티아: 플리트비체, 스플리트, 두브로브니크</li>
             </ul>
           </article>
           <article class="card">
-            <h3>준비할 것</h3>
+            <h3>이동 전략</h3>
             <ul>
-              <li>항공권, 숙소, 도시 간 이동편 예약</li>
-              <li>여행자 보험, 환전, 현지 교통권 확인</li>
-              <li>계절에 맞는 옷차림과 짐 목록 정리</li>
+              <li>장거리 구간은 항공과 고속열차 중심</li>
+              <li>슬로베니아-크로아티아 구간은 렌터카 활용</li>
+              <li>귀국 전날은 바르샤바에서 여유 일정 확보</li>
             </ul>
           </article>
           <article class="card">
-            <h3>기록 방식</h3>
+            <h3>확인 필요</h3>
             <ul>
-              <li>출발 전 계획 변경 이력 남기기</li>
-              <li>도시별 짧은 감상과 추천 장소 기록</li>
-              <li>사진은 여행 후 대표 컷부터 순차 업로드</li>
+              <li>9월 30일 두브로브니크 또는 스플리트 출발 항공 비교</li>
+              <li>렌터카 수령/반납 지점과 국경 이동 조건 확인</li>
+              <li>숙소, 입장권, 현지 투어 예약 상태 업데이트</li>
             </ul>
           </article>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="route-title">
+      <section class="section" id="itinerary" aria-labelledby="itinerary-title">
         <div class="section-header">
-          <h2 id="route-title">예상 타임라인</h2>
-          <p class="section-note">날짜와 도시는 1차 초안이며, 실제 예약 후 변경될 수 있습니다.</p>
+          <h2 id="itinerary-title">일자별 일정표</h2>
+          <p class="section-note">Notion export의 일정표를 공개 페이지용으로 정리했습니다.</p>
         </div>
-        <ol class="timeline">
-          <li>
-            <time datetime="2026-07">2026.07</time>
-            <div>
-              <strong>여행 큰 방향 잡기</strong>
-              <p>방문 도시 후보, 여행 기간, 예산 범위를 정리합니다.</p>
-            </div>
-          </li>
-          <li>
-            <time datetime="2026-08">2026.08</time>
-            <div>
-              <strong>예약과 준비물 확정</strong>
-              <p>항공, 숙소, 이동편, 필수 준비물을 확정하고 체크리스트를 업데이트합니다.</p>
-            </div>
-          </li>
-          <li>
-            <time datetime="2026-09">2026.09</time>
-            <div>
-              <strong>동유럽 여행</strong>
-              <p>현지에서 본 것, 먹은 것, 걸었던 길을 짧게라도 기록합니다.</p>
-            </div>
-          </li>
-          <li>
-            <time datetime="2026-10">2026.10</time>
-            <div>
-              <strong>후기와 사진 정리</strong>
-              <p>도시별 후기, 추천 장소, 다음 여행자를 위한 메모를 정리합니다.</p>
-            </div>
-          </li>
-        </ol>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>날짜</th>
+                <th>도시/국가</th>
+                <th>이동</th>
+                <th>메모</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>9/19 토</td>
+                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td>인천에서 바르샤바로 항공 이동</td>
+                <td>14:05 도착 예정, 올드타운 산책</td>
+              </tr>
+              <tr>
+                <td>9/20 일</td>
+                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td>현지 체류</td>
+                <td>왕궁, 올드타운, 와지엔키 공원</td>
+              </tr>
+              <tr>
+                <td>9/21 월</td>
+                <td><span class="city">크라쿠프</span><br />폴란드</td>
+                <td>바르샤바에서 고속열차, 약 2시간 20분</td>
+                <td>오후 구시가지 관광</td>
+              </tr>
+              <tr>
+                <td>9/22 화</td>
+                <td><span class="city">크라쿠프</span><br />폴란드</td>
+                <td>현지 체류</td>
+                <td>비엘리치카 소금광산 또는 아우슈비츠</td>
+              </tr>
+              <tr>
+                <td>9/23 수</td>
+                <td><span class="city">류블랴나</span><br />슬로베니아</td>
+                <td>크라쿠프에서 환승 항공</td>
+                <td>늦은 오후 도착 예상</td>
+              </tr>
+              <tr>
+                <td>9/24 목</td>
+                <td><span class="city">류블랴나 / 블레드</span><br />슬로베니아</td>
+                <td>렌터카 수령 후 블레드 호수 왕복, 약 45분</td>
+                <td>블레드 호수 관광</td>
+              </tr>
+              <tr>
+                <td>9/25 금</td>
+                <td><span class="city">플리트비체</span><br />크로아티아</td>
+                <td>류블랴나에서 렌터카 이동, 약 3시간</td>
+                <td>국립공원 관광</td>
+              </tr>
+              <tr>
+                <td>9/26 토</td>
+                <td><span class="city">스플리트</span><br />크로아티아</td>
+                <td>플리트비체에서 렌터카 이동, 약 2.5~3시간</td>
+                <td>해안도로 드라이브</td>
+              </tr>
+              <tr>
+                <td>9/27 일</td>
+                <td><span class="city">스플리트</span><br />크로아티아</td>
+                <td>현지 체류</td>
+                <td>디오클레티아누스 궁전, 리바 해변 산책</td>
+              </tr>
+              <tr>
+                <td>9/28 월</td>
+                <td><span class="city">두브로브니크</span><br />크로아티아</td>
+                <td>스플리트에서 렌터카 이동, 약 3시간</td>
+                <td>성벽 야경</td>
+              </tr>
+              <tr>
+                <td>9/29 화</td>
+                <td><span class="city">두브로브니크</span><br />크로아티아</td>
+                <td>현지 체류</td>
+                <td>성벽, 케이블카, 올드타운</td>
+              </tr>
+              <tr>
+                <td>9/30 수</td>
+                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td>두브로브니크에서 항공 이동 예정</td>
+                <td>렌터카 반납 후 항공 이동, 출발지는 비교 후 확정</td>
+              </tr>
+              <tr>
+                <td>10/1 목</td>
+                <td><span class="city">바르샤바</span><br />폴란드</td>
+                <td>현지 체류</td>
+                <td>쇼핑, 기념품 구매, 여유 일정</td>
+              </tr>
+              <tr>
+                <td>10/2 금</td>
+                <td><span class="city">귀국</span></td>
+                <td>바르샤바에서 브로츠와프를 거쳐 인천으로 이동</td>
+                <td>국내선 연결 후 귀국</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="transport" aria-labelledby="transport-title">
+        <div class="section-header">
+          <h2 id="transport-title">이동수단 요약</h2>
+          <p class="section-note">도시 간 이동만 따로 모아 실제 예약 전 확인하기 쉽게 정리했습니다.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>항공</h3>
+            <ul>
+              <li>인천 → 바르샤바: 약 13시간</li>
+              <li>크라쿠프 → 류블랴나: 환승 항공, 약 4~6시간</li>
+              <li>두브로브니크 또는 스플리트 → 바르샤바: 약 4~6시간</li>
+              <li>바르샤바 → 브로츠와프 → 인천: 약 1시간 + 약 11시간</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>열차</h3>
+            <ul>
+              <li>바르샤바 → 크라쿠프: 고속열차 약 2시간 20분</li>
+              <li>폴란드 내 이동은 항공보다 열차가 효율적인 구간으로 검토</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>렌터카</h3>
+            <ul>
+              <li>류블랴나 → 블레드: 약 45분</li>
+              <li>블레드/류블랴나 → 플리트비체: 약 3시간</li>
+              <li>플리트비체 → 스플리트: 약 2.5~3시간</li>
+              <li>스플리트 → 두브로브니크: 약 3시간</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
       <section class="section" id="journal" aria-labelledby="journal-title">
         <div class="section-header">
-          <h2 id="journal-title">여행 후기</h2>
-          <p class="section-note">여행 전에는 준비 메모로, 여행 후에는 실제 후기로 업데이트합니다.</p>
+          <h2 id="journal-title">검토 메모와 후기</h2>
+          <p class="section-note">여행 전에는 결정 포인트를, 여행 후에는 실제 후기를 업데이트합니다.</p>
         </div>
         <div class="journal">
           <article class="entry">
-            <h3>여행 전 메모</h3>
+            <h3>현재 일정의 장점</h3>
             <p>
-              아직 출발 전입니다. 동유럽에서 보고 싶은 풍경, 도시별 기대 포인트,
-              준비하면서 알게 된 팁을 이곳에 남길 예정입니다.
+              폴란드 핵심 도시 2곳, 슬로베니아의 류블랴나와 블레드,
+              크로아티아의 플리트비체, 스플리트, 두브로브니크를 모두 포함합니다.
+              렌터카는 필요한 구간에서만 사용해 비용과 피로도를 조정하는 계획입니다.
             </p>
           </article>
           <article class="entry">
-            <h3>다녀온 뒤 남길 것</h3>
+            <h3>마지막 수정 포인트</h3>
             <p>
-              좋았던 도시, 아쉬웠던 일정, 다시 가고 싶은 장소, 지인에게 추천하고 싶은 코스를
-              여행 후 정리합니다.
+              9월 30일 항공편은 두브로브니크 출발과 스플리트 출발을 모두 비교한 뒤 결정하는 것이 좋습니다.
+              스플리트 출발편 조건이 더 좋다면, 9월 29일 두브로브니크 관광 후 스플리트로 돌아와 숙박하는 방식도 후보입니다.
+            </p>
+          </article>
+          <article class="entry">
+            <h3>여행 후 업데이트 예정</h3>
+            <p>
+              실제 이동 난이도, 좋았던 도시, 아쉬웠던 일정, 추천 장소, 다시 가고 싶은 코스를
+              여행 후 정리합니다. 사진은 대표 컷부터 순차적으로 추가합니다.
             </p>
           </article>
         </div>
@@ -516,8 +688,12 @@
           <p class="section-note">현재는 사진 자리만 준비했습니다. 여행 후 대표 사진을 추가할 예정입니다.</p>
         </div>
         <div class="photo-grid">
-          <div class="photo-slot">프라하 또는 첫 도시 사진</div>
-          <div class="photo-slot">거리와 건축 사진</div>
+          <div class="photo-slot">바르샤바 올드타운</div>
+          <div class="photo-slot">크라쿠프 구시가지</div>
+          <div class="photo-slot">블레드 호수</div>
+          <div class="photo-slot">플리트비체 국립공원</div>
+          <div class="photo-slot">스플리트 해안</div>
+          <div class="photo-slot">두브로브니크 성벽</div>
           <div class="photo-slot">음식과 카페 기록</div>
           <div class="photo-slot">여행 중 가장 좋았던 순간</div>
         </div>

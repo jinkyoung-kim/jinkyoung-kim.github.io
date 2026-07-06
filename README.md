@@ -23,3 +23,7 @@
 - 링크 추가: `index.html`의 `link-list` 영역에 항목 추가
 - 스타일 변경: `index.html` 상단 `<style>` 영역 수정
 - 2026년 9월 동유럽 여행 기록 수정: `eastern-europe-2026-september/index.html` 수정
+
+## 업데이트 기록
+
+- 2026-07-06: Notion export 첨부 파일을 기반으로 동유럽 여행 일정표와 이동수단 요약 반영
