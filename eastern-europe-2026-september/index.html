@@ -8,6 +8,7 @@
     - 2026-07-06 v3: 검토 메모 섹션에 계획 점검 메모 2건 추가 (확인된 사실/리스크, 추가·조정 검토 코스)
     - 2026-07-06 v4: 제목을 '2026년 9월 동유럽 여행'으로 변경, 요약 패널의 공개 범위/업데이트 항목 삭제
     - 2026-07-06 v5: 상단 우측 요약 카드 제거, 일자별 일정표 하단에 방문 도시 경로 지도 이미지 추가
+    - 2026-07-06 v6: 상단을 가로 1단으로 재구성 (제목/소개문 폭 제한 해제, 미사용 카드 CSS 정리)
 -->
 <html lang="ko">
 <head>
@@ -88,12 +89,9 @@
       gap: 12px;
     }
 
-    /* 2026-07-06 수정: 우측 요약 카드 제거로 단일 컬럼 구성 */
+    /* 2026-07-06 수정: 상단 가로 1단 구성 (우측 빈 영역 제거) */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-      align-items: stretch;
+      display: block;
     }
 
     .hero-copy {
@@ -111,7 +109,6 @@
     }
 
     h1 {
-      max-width: 780px;
       margin: 0;
       font-size: clamp(42px, 7vw, 84px);
       line-height: 1.02;
@@ -119,63 +116,9 @@
     }
 
     .lead {
-      max-width: 720px;
       margin: 24px 0 0;
       color: var(--muted);
       font-size: clamp(17px, 2vw, 21px);
-    }
-
-    .hero-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 28px;
-      border: 1px solid rgba(222, 214, 200, 0.9);
-      border-radius: 8px;
-      background: rgba(255, 253, 248, 0.88);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-
-    .stamp {
-      display: inline-flex;
-      width: 108px;
-      height: 108px;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--wine);
-      border-radius: 50%;
-      color: var(--wine);
-      font-size: 15px;
-      font-weight: 900;
-      text-align: center;
-      transform: rotate(-8deg);
-    }
-
-    .meta-list {
-      display: grid;
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .meta-list li {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 16px;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-    }
-
-    .meta-list strong {
-      color: var(--forest);
-      font-size: 14px;
-    }
-
-    .meta-list span {
-      color: var(--muted);
     }
 
     .section {
@@ -433,13 +376,8 @@
     }
 
     @media (max-width: 860px) {
-      .hero,
       .grid {
         grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
       }
 
       .hero-copy {
@@ -467,13 +405,11 @@
         flex-direction: column;
       }
 
-      .hero-panel,
       .card,
       .entry {
         padding: 18px;
       }
 
-      .meta-list li,
       .timeline li {
         grid-template-columns: 1fr;
         gap: 4px;
