@@ -2,81 +2,348 @@
 <!--
   작성일: 2026-07-06
   버전: v1 (1차 초안)
-  설명: jinkyoung-kim.github.io 개인 GitHub Pages 메인 페이지
+  설명: jinkyoung-kim.github.io 공개 개인 GitHub Pages 메인 페이지
 -->
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jinkyoung Kim의 공개 개인 GitHub Pages 홈페이지입니다." />
+  <meta property="og:title" content="Jinkyoung Kim" />
+  <meta property="og:description" content="GitHub Pages로 운영하는 공개 개인 홈페이지입니다." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jinkyoung-kim.github.io/" />
   <title>Jinkyoung Kim</title>
   <style>
-    /* 기본 스타일 — 시스템 폰트 기반의 심플한 레이아웃 */
+    /* 기본 디자인: 별도 빌드 없이 GitHub Pages에서 바로 동작하는 단일 HTML 구성 */
     :root {
-      --text: #1a1a1a;
-      --sub: #6b7280;
-      --accent: #2563eb;
-      --bg: #ffffff;
+      --bg: #f7f3ec;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #65717d;
+      --line: #ded7cd;
+      --primary: #1f6f78;
+      --primary-dark: #174f56;
+      --accent: #b85c38;
+      --shadow: 0 20px 60px rgba(31, 41, 51, 0.12);
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text: #e5e7eb;
-        --sub: #9ca3af;
-        --accent: #60a5fa;
-        --bg: #111827;
-      }
+
+    * {
+      box-sizing: border-box;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
-      display: flex;
+      margin: 0;
       min-height: 100vh;
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(31, 111, 120, 0.12), transparent 38%),
+        linear-gradient(315deg, rgba(184, 92, 56, 0.14), transparent 34%),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 32px;
+      align-items: stretch;
+      min-height: 58vh;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 56px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
     }
-    main { max-width: 560px; width: 100%; }
-    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    .subtitle { color: var(--sub); margin-bottom: 2rem; }
-    section { margin-bottom: 1.5rem; }
-    h2 {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--sub);
-      margin-bottom: 0.5rem;
+
+    .button:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 12px 28px rgba(31, 111, 120, 0.22);
+      transform: translateY(-1px);
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { list-style: none; }
-    li { margin-bottom: 0.25rem; }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    .button.secondary:hover {
+      background: rgba(31, 111, 120, 0.08);
+      box-shadow: none;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 28px;
+      border: 1px solid rgba(222, 215, 205, 0.86);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .avatar {
+      display: grid;
+      width: 108px;
+      height: 108px;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #ffffff;
+      font-size: 36px;
+      font-weight: 800;
+    }
+
+    .profile h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .profile p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .link-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .link-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .link-list span {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .section {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 26px;
+      letter-spacing: 0;
+    }
+
+    .section p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+    }
+
     footer {
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      color: var(--sub);
+      margin-top: 72px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 24px, 1080px);
+        padding-top: 20px;
+      }
+
+      .nav {
+        align-items: flex-start;
+        margin-bottom: 32px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .intro {
+        padding: 28px 0 8px;
+      }
+
+      .profile {
+        padding: 22px;
+      }
+
+      .link-list a {
+        flex-direction: column;
+        gap: 2px;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Jinkyoung Kim</h1>
-    <p class="subtitle">안녕하세요, 김진경입니다. 👋</p>
+  <div class="page">
+    <header class="nav" aria-label="페이지 상단 내비게이션">
+      <div class="brand">Jinkyoung Kim</div>
+      <nav class="nav-links" aria-label="주요 링크">
+        <a href="#about">About</a>
+        <a href="#links">Links</a>
+        <a href="https://github.com/jinkyoung-kim">GitHub</a>
+      </nav>
+    </header>
 
-    <section>
-      <h2>About</h2>
-      <p>이 페이지는 GitHub Pages로 만든 개인 홈페이지입니다. 내용은 자유롭게 수정해서 사용하세요.</p>
-    </section>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="intro">
+          <p class="eyebrow">Public GitHub Pages</p>
+          <h1 id="hero-title">Jinkyoung Kim</h1>
+          <p class="lead">
+            공개 프로젝트와 작업 흔적을 연결하기 위한 개인 홈페이지입니다.
+            필요한 정보는 이 페이지를 기준으로 천천히 정리해갈 예정입니다.
+          </p>
+          <div class="actions">
+            <a class="button" href="https://github.com/jinkyoung-kim">GitHub 보기</a>
+            <a class="button secondary" href="#about">소개 보기</a>
+          </div>
+        </div>
 
-    <section>
-      <h2>Links</h2>
-      <ul>
-        <li><a href="https://github.com/jinkyoung-kim">GitHub — @jinkyoung-kim</a></li>
-      </ul>
-    </section>
+        <aside class="profile" aria-label="프로필 요약">
+          <div>
+            <div class="avatar" aria-hidden="true">JK</div>
+          </div>
+          <div>
+            <h2>김진경</h2>
+            <p>
+              GitHub Pages로 운영하는 공개 개인 페이지입니다.
+              더 자세한 소개, 프로젝트, 연락 정보는 추후 업데이트 예정입니다.
+            </p>
+          </div>
+          <ul class="link-list" id="links">
+            <li>
+              <a href="https://github.com/jinkyoung-kim">
+                GitHub
+                <span>@jinkyoung-kim</span>
+              </a>
+            </li>
+          </ul>
+        </aside>
+      </section>
 
-    <footer>© 2026 Jinkyoung Kim · Built with GitHub Pages</footer>
-  </main>
+      <section class="section" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>
+          이 페이지는 누구나 접근 가능한 공개 홈페이지로 구성되었습니다.
+          현재는 기본 프로필과 GitHub 링크를 제공하며, 필요에 따라 포트폴리오,
+          프로젝트 소개, 블로그 링크 등을 추가할 수 있습니다.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Jinkyoung Kim. Built with GitHub Pages.
+    </footer>
+  </div>
 </body>
 </html>
