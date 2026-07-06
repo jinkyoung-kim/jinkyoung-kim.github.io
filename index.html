@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+  작성일: 2026-07-06
+  버전: v1 (1차 초안)
+  설명: jinkyoung-kim.github.io 개인 GitHub Pages 메인 페이지
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jinkyoung Kim</title>
+  <style>
+    /* 기본 스타일 — 시스템 폰트 기반의 심플한 레이아웃 */
+    :root {
+      --text: #1a1a1a;
+      --sub: #6b7280;
+      --accent: #2563eb;
+      --bg: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #e5e7eb;
+        --sub: #9ca3af;
+        --accent: #60a5fa;
+        --bg: #111827;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    main { max-width: 560px; width: 100%; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--sub); margin-bottom: 2rem; }
+    section { margin-bottom: 1.5rem; }
+    h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sub);
+      margin-bottom: 0.5rem;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; }
+    li { margin-bottom: 0.25rem; }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--sub);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Jinkyoung Kim</h1>
+    <p class="subtitle">안녕하세요, 김진경입니다. 👋</p>
+
+    <section>
+      <h2>About</h2>
+      <p>이 페이지는 GitHub Pages로 만든 개인 홈페이지입니다. 내용은 자유롭게 수정해서 사용하세요.</p>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://github.com/jinkyoung-kim">GitHub — @jinkyoung-kim</a></li>
+      </ul>
+    </section>
+
+    <footer>© 2026 Jinkyoung Kim · Built with GitHub Pages</footer>
+  </main>
+</body>
+</html>
