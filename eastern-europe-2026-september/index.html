@@ -13,6 +13,7 @@
     - 2026-07-07 v8: 직항 확인 반영 — 바르샤바→류블랴나(LOT), 두브로브니크→크라쿠프(라이언에어 심야편) 시각/소요시간 업데이트
     - 2026-07-07 v9: 인천↔폴란드 왕복 항공권 예약 확정 반영 (LO1098 / LO3843+LO2005 편명·시각, 개인정보 제외)
     - 2026-07-07 v10: 일정표 하단에 날짜별 숙박 표 신규 추가 (숙소는 예약 확정 시 업데이트 예정)
+    - 2026-07-07 v11: 숙박 표 숙소 항목을 '제안' 버튼으로 변경 — 클릭 시 동선 기준 추천 위치 레이어 표시
 -->
 <html lang="ko">
 <head>
@@ -241,6 +242,74 @@
     .city a:hover {
       color: var(--forest);
       text-decoration-color: var(--forest);
+    }
+
+    /* 2026-07-07 추가: 숙박 위치 제안 버튼과 레이어(모달) */
+    .stay-suggest {
+      padding: 6px 14px;
+      border: 1px solid var(--forest);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--forest);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .stay-suggest:hover {
+      background: var(--forest);
+      color: var(--paper);
+    }
+
+    .stay-dialog {
+      width: min(560px, calc(100% - 32px));
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .stay-dialog::backdrop {
+      background: rgba(38, 50, 56, 0.45);
+    }
+
+    .stay-dialog-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 22px 0;
+    }
+
+    .stay-dialog-head h3 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+
+    .stay-dialog-close {
+      border: 0;
+      background: none;
+      color: var(--muted);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .stay-dialog-body {
+      padding: 12px 22px 22px;
+      color: var(--muted);
+    }
+
+    .stay-dialog-body p {
+      margin: 10px 0 0;
+    }
+
+    .stay-dialog-body strong {
+      color: var(--forest);
     }
 
     /* 2026-07-06 추가: 일정표 하단 경로 지도 */
@@ -606,7 +675,7 @@
       <section class="section" id="stay" aria-labelledby="stay-title">
         <div class="section-header">
           <h2 id="stay-title">날짜별 숙박</h2>
-          <p class="section-note">숙소는 예약하는 대로 업데이트합니다.</p>
+          <p class="section-note">숙소는 예약하는 대로 업데이트합니다. '제안'을 누르면 동선 기준 추천 위치를 확인할 수 있습니다.</p>
         </div>
         <div class="table-wrap">
           <table>
@@ -622,79 +691,79 @@
               <tr>
                 <td>9/19 토</td>
                 <td><span class="city">바르샤바</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="warsaw-front">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/20 일</td>
                 <td><span class="city">바르샤바</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="warsaw-front">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/21 월</td>
                 <td><span class="city">류블랴나</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="ljubljana">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/22 화</td>
                 <td><span class="city">류블랴나</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="ljubljana">제안</button></td>
                 <td>렌터카 주차 가능 여부 확인</td>
               </tr>
               <tr>
                 <td>9/23 수</td>
                 <td><span class="city">플리트비체</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="plitvice">제안</button></td>
                 <td>국립공원 인근 1박</td>
               </tr>
               <tr>
                 <td>9/24 목</td>
                 <td><span class="city">스플리트</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="split">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/25 금</td>
                 <td><span class="city">스플리트</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="split">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/26 토</td>
                 <td><span class="city">두브로브니크</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="dubrovnik">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/27 일</td>
                 <td><span class="city">두브로브니크</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="dubrovnik">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/28 월</td>
                 <td><span class="city">크라쿠프</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="krakow">제안</button></td>
                 <td>00:30 도착 — 자정 이후 체크인 가능 숙소 필요</td>
               </tr>
               <tr>
                 <td>9/29 화</td>
                 <td><span class="city">크라쿠프</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="krakow">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>9/30 수</td>
                 <td><span class="city">크라쿠프</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="krakow">제안</button></td>
                 <td></td>
               </tr>
               <tr>
                 <td>10/1 목</td>
                 <td><span class="city">바르샤바</span></td>
-                <td>예약 예정</td>
+                <td><button type="button" class="stay-suggest" data-stay="warsaw-back">제안</button></td>
                 <td>10/2 13:15 출발 항공 고려해 공항 접근성 좋은 곳 권장</td>
               </tr>
               <tr>
@@ -818,5 +887,91 @@
       2026년 9월 동유럽 여행 · 1차 초안 · © 2026 Jinkyoung Kim
     </footer>
   </div>
+
+  <!-- 2026-07-07 추가: 숙박 위치 제안 레이어 (숙박 표 '제안' 버튼 클릭 시 표시) -->
+  <dialog class="stay-dialog" id="stay-dialog" aria-labelledby="stay-dialog-title">
+    <div class="stay-dialog-head">
+      <h3 id="stay-dialog-title"></h3>
+      <button type="button" class="stay-dialog-close" id="stay-dialog-close" aria-label="닫기">&times;</button>
+    </div>
+    <div class="stay-dialog-body" id="stay-dialog-body"></div>
+  </dialog>
+
+  <script>
+    // 2026-07-07 추가: 도시별 숙박 위치 제안 데이터와 레이어 열기/닫기 동작
+    (function () {
+      var STAY_SUGGESTIONS = {
+        "warsaw-front": {
+          title: "바르샤바 (9/19~9/20) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 중앙역~노비 시비아트 거리 일대 (시내 중심)</p>" +
+            "<p><strong>동선 근거</strong>: 올드타운까지 도보/트램으로 이동 가능하고, 9/21 아침 쇼팽공항행 기차가 중앙역에서 직결(약 20분)되어 출발이 편합니다.</p>" +
+            "<p><strong>참고</strong>: 10/1 재숙박과 같은 숙소로 예약하면 재방문 시 익숙하고 짐 보관 문의도 수월합니다 (숙소 정책 확인 필요).</p>"
+        },
+        "ljubljana": {
+          title: "류블랴나 (9/21~9/22) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 구시가지 가장자리 — 프레셰렌 광장 도보 10분 내, 주차 가능 숙소</p>" +
+            "<p><strong>동선 근거</strong>: 구시가지 중심은 차량 진입 제한 구역입니다. 9/22 렌터카 수령 후 블레드 왕복, 9/23 플리트비체 출발까지 고려하면 주차 가능 여부가 핵심입니다.</p>"
+        },
+        "plitvice": {
+          title: "플리트비체 (9/23) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 공원 2번 게이트(남쪽) 인근 또는 무키녜 마을</p>" +
+            "<p><strong>동선 근거</strong>: 다음날 아침 개장 직후 입장에 유리하고, 관광 후 스플리트로 남하하는 방향과 일치합니다.</p>"
+        },
+        "split": {
+          title: "스플리트 (9/24~9/25) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 구시가지 도보 10~15분 권역 — 바치비체 해변 쪽 등 주차 가능 지역</p>" +
+            "<p><strong>동선 근거</strong>: 디오클레티아누스 궁전 일대는 차량 진입 불가에 주차난이 심합니다. 도보권과 주차를 동시에 확보하는 위치가 최적입니다.</p>"
+        },
+        "dubrovnik": {
+          title: "두브로브니크 (9/26~9/27) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 라파드 또는 그루주 지구</p>" +
+            "<p><strong>동선 근거</strong>: 올드타운 내부는 차량 불가에 계단이 많아 짐 이동이 힘듭니다. 라파드/그루주는 주차가 수월하고 올드타운까지 버스 10~15분, 9/28 공항(시내 남쪽 약 30분) 이동도 무난합니다.</p>" +
+            "<p><strong>참고</strong>: 플로체 지구는 성벽 전망이 뛰어나지만 주차가 어려워 렌터카 일정에는 차선책입니다.</p>"
+        },
+        "krakow": {
+          title: "크라쿠프 (9/28~9/30) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 구시가지(리네크 광장) 또는 카지미에시 지구 — 24시간 리셉션 호텔</p>" +
+            "<p><strong>동선 근거</strong>: 9/28 00:30 심야 도착이라 셀프 체크인 아파트보다 24시간 리셉션 호텔이 안전합니다. 아우슈비츠·소금광산 투어 픽업도 대부분 구시가지에서 출발합니다.</p>" +
+            "<p><strong>참고</strong>: 3박 모두 같은 숙소 연박을 권합니다 — 심야 체크인 후 이틀간 투어 기점으로 쓰기 좋습니다.</p>"
+        },
+        "warsaw-back": {
+          title: "바르샤바 (10/1) 숙박 위치 제안",
+          body:
+            "<p><strong>추천 영역</strong>: 중앙역 일대</p>" +
+            "<p><strong>동선 근거</strong>: 쇼핑(즈워테 타라시 등)이 도보권이고, 다음날 13:15 출발 항공을 위한 공항 기차가 직결됩니다.</p>" +
+            "<p><strong>참고</strong>: 9/19~20 체류와 같은 숙소로 예약하는 것을 추천합니다.</p>"
+        }
+      };
+
+      var dialog = document.getElementById("stay-dialog");
+      var dialogTitle = document.getElementById("stay-dialog-title");
+      var dialogBody = document.getElementById("stay-dialog-body");
+
+      document.querySelectorAll(".stay-suggest").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var data = STAY_SUGGESTIONS[btn.getAttribute("data-stay")];
+          if (!data) return;
+          dialogTitle.textContent = data.title;
+          dialogBody.innerHTML = data.body;
+          dialog.showModal();
+        });
+      });
+
+      document.getElementById("stay-dialog-close").addEventListener("click", function () {
+        dialog.close();
+      });
+
+      // 레이어 바깥(배경) 클릭 시 닫기
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) dialog.close();
+      });
+    })();
+  </script>
 </body>
 </html>
