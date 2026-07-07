@@ -17,6 +17,7 @@
     - 2026-07-07 v12: 최종 경로 확정 — 크라쿠프 열차 왕복(9/21~23) 후 직항으로 류블랴나 이동, 모든 항공 직항 구성. 일정표/이동/숙박/제안 레이어/검토 메모 일괄 반영
     - 2026-07-08 v13: A안 확정 — 바르샤바→류블랴나 직항 9/23 미운항으로 9/22 출발. 바르샤바 앞 체류 1박 축소, 크라쿠프 9/20~21, 두브로브니크 3박(9/27~29)으로 확대
     - 2026-07-08 v14: 항공·경로 최종 확정 — 9/22 LOT 14:40→16:20, 9/29 위즈에어 15:00→16:55(9/30 미운항). 플리트비체 무박 경유(9/24)로 변경, 스플리트 2박·두브로브니크 3박 유지, 바르샤바 후반 3박
+    - 2026-07-08 v15: 경로 지도를 인라인 이미지에서 '지도 보기' 버튼 클릭 시 모달 표시로 변경
 -->
 <html lang="ko">
 <head>
@@ -315,25 +316,54 @@
       color: var(--forest);
     }
 
-    /* 2026-07-06 추가: 일정표 하단 경로 지도 */
-    .route-map {
+    /* 2026-07-08 수정: 경로 지도는 '지도 보기' 버튼 클릭 시 모달로 표시 */
+    .map-open-wrap {
       margin: 20px 0 0;
+      text-align: center;
     }
 
-    .route-map img {
+    .map-open {
+      padding: 10px 22px;
+      border: 1px solid var(--forest);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--forest);
+      font: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .map-open:hover {
+      background: var(--forest);
+      color: var(--paper);
+    }
+
+    .map-dialog {
+      width: min(720px, calc(100% - 32px));
+      max-height: 90vh;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .map-dialog::backdrop {
+      background: rgba(38, 50, 56, 0.45);
+    }
+
+    .map-dialog-body {
+      padding: 12px 22px 22px;
+    }
+
+    .map-dialog-body img {
       display: block;
       width: 100%;
       height: auto;
       border: 1px solid rgba(222, 214, 200, 0.92);
       border-radius: 8px;
-      box-shadow: 0 10px 28px rgba(38, 50, 56, 0.06);
-    }
-
-    .route-map figcaption {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
     }
 
     .summary-list {
@@ -665,15 +695,10 @@
             </tbody>
           </table>
         </div>
-        <!-- 2026-07-06 추가: 방문 도시 경로 지도 -->
-        <figure class="route-map">
-          <img
-            src="images/route-map-20260706.png"
-            alt="여행 경로 지도: 바르샤바, 브로츠와프, 크라쿠프, 류블랴나, 블레드, 플리트비체 국립공원, 스플리트, 두브로브니크 위치가 핀으로 표시된 동유럽 지도"
-            loading="lazy"
-          />
-          <figcaption>방문 도시 경로 지도 — 폴란드에서 크로아티아까지</figcaption>
-        </figure>
+        <!-- 2026-07-08 수정: 경로 지도는 버튼 클릭 시 모달로 표시 -->
+        <p class="map-open-wrap">
+          <button type="button" class="map-open" id="map-open">지도 보기</button>
+        </p>
       </section>
 
       <!-- 2026-07-07 추가: 날짜별 숙박 표 (숙소는 예약 확정 시 업데이트) -->
@@ -895,6 +920,21 @@
     </footer>
   </div>
 
+  <!-- 2026-07-08 추가: 경로 지도 모달 ('지도 보기' 버튼 클릭 시 표시) -->
+  <dialog class="map-dialog" id="map-dialog" aria-labelledby="map-dialog-title">
+    <div class="stay-dialog-head">
+      <h3 id="map-dialog-title">방문 도시 경로 지도 — 폴란드에서 크로아티아까지</h3>
+      <button type="button" class="stay-dialog-close" id="map-dialog-close" aria-label="닫기">&times;</button>
+    </div>
+    <div class="map-dialog-body">
+      <img
+        src="images/route-map-20260706.png"
+        alt="여행 경로 지도: 바르샤바, 브로츠와프, 크라쿠프, 류블랴나, 블레드, 플리트비체 국립공원, 스플리트, 두브로브니크 위치가 핀으로 표시된 동유럽 지도"
+        loading="lazy"
+      />
+    </div>
+  </dialog>
+
   <!-- 2026-07-07 추가: 숙박 위치 제안 레이어 (숙박 표 '제안' 버튼 클릭 시 표시) -->
   <dialog class="stay-dialog" id="stay-dialog" aria-labelledby="stay-dialog-title">
     <div class="stay-dialog-head">
@@ -971,6 +1011,18 @@
       // 레이어 바깥(배경) 클릭 시 닫기
       dialog.addEventListener("click", function (event) {
         if (event.target === dialog) dialog.close();
+      });
+
+      // 2026-07-08 추가: 경로 지도 모달 열기/닫기
+      var mapDialog = document.getElementById("map-dialog");
+      document.getElementById("map-open").addEventListener("click", function () {
+        mapDialog.showModal();
+      });
+      document.getElementById("map-dialog-close").addEventListener("click", function () {
+        mapDialog.close();
+      });
+      mapDialog.addEventListener("click", function (event) {
+        if (event.target === mapDialog) mapDialog.close();
       });
     })();
   </script>
