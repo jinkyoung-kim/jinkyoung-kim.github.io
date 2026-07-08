@@ -22,6 +22,7 @@
     - 2026-07-08 v17: LOT 직항 2편 발견으로 항공 재조정 — 9/23 바르샤바→류블랴나(11:10), 10/1 두브로브니크→바르샤바(19:15 저녁 편). 바르샤바 전반 2박·플리트비체 1박 복원, 두브로브니크 3박+10/1 낮 유지
     - 2026-07-08 v18: 폴란드 내 열차 2구간 예약 완료 반영 — 9/21 레오 익스프레스 11:13→14:03, 9/23 IC 142 06:15→08:44 (11:10 항공 연결 여유 약 2시간 26분)
     - 2026-07-08 v19: 댓글 영역 추가 — giscus (GitHub Discussions 기반, 사진·파일 첨부 가능)
+    - 2026-07-08 v20: 댓글 안내 정정 — 위젯은 파일 드래그 첨부 미지원(GitHub API 제약). Discussion #1 사전 생성 후 'GitHub에서 댓글 쓰기(첨부 가능)' 링크 추가
 -->
 <html lang="ko">
 <head>
@@ -341,6 +342,17 @@
     .map-open:hover {
       background: var(--forest);
       color: var(--paper);
+    }
+
+    /* 2026-07-08 추가: 댓글 섹션의 GitHub 링크 버튼 (a 태그에 버튼 스타일 적용) */
+    a.map-open {
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .comments-github-link {
+      margin: 0 0 20px;
+      text-align: left;
     }
 
     .map-dialog {
@@ -989,8 +1001,12 @@
       <section class="section" id="comments" aria-labelledby="comments-title">
         <div class="section-header">
           <h2 id="comments-title">댓글</h2>
-          <p class="section-note">GitHub 계정으로 로그인해 댓글을 남길 수 있어요. 사진·파일은 댓글 입력창에 드래그하면 첨부됩니다.</p>
+          <p class="section-note">GitHub 계정으로 로그인해 댓글을 남길 수 있어요. 아래 위젯은 텍스트 댓글용이고, 사진·파일 첨부는 'GitHub에서 댓글 쓰기'에서 가능합니다 — 어느 쪽에 남겨도 서로 그대로 표시됩니다.</p>
         </div>
+        <!-- 2026-07-08 수정: giscus 위젯은 파일 드래그 첨부 미지원 (GitHub API 제약) — 첨부는 GitHub Discussions에서 직접 작성하도록 안내 -->
+        <p class="map-open-wrap comments-github-link">
+          <a class="map-open" href="https://github.com/jinkyoung-kim/jinkyoung-kim.github.io/discussions/1" target="_blank" rel="noopener">GitHub에서 댓글 쓰기 (사진·파일 첨부 가능)</a>
+        </p>
         <script src="https://giscus.app/client.js"
           data-repo="jinkyoung-kim/jinkyoung-kim.github.io"
           data-repo-id="R_kgDOTO2x5w"
