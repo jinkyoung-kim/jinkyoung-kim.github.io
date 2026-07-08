@@ -21,6 +21,7 @@
     - 2026-07-08 v16: 이동수단 요약을 수단별 카드에서 날짜순 표로 재구성
     - 2026-07-08 v17: LOT 직항 2편 발견으로 항공 재조정 — 9/23 바르샤바→류블랴나(11:10), 10/1 두브로브니크→바르샤바(19:15 저녁 편). 바르샤바 전반 2박·플리트비체 1박 복원, 두브로브니크 3박+10/1 낮 유지
     - 2026-07-08 v18: 폴란드 내 열차 2구간 예약 완료 반영 — 9/21 레오 익스프레스 11:13→14:03, 9/23 IC 142 06:15→08:44 (11:10 항공 연결 여유 약 2시간 26분)
+    - 2026-07-08 v19: 댓글 영역 추가 — giscus (GitHub Discussions 기반, 사진·파일 첨부 가능)
 -->
 <html lang="ko">
 <head>
@@ -541,6 +542,7 @@
         <a href="#transport">이동</a>
         <a href="#journal">후기</a>
         <a href="#photos">사진</a>
+        <a href="#comments">댓글</a>
         <a href="/">홈</a>
       </nav>
     </header>
@@ -981,6 +983,29 @@
           <div class="photo-slot">음식과 카페 기록</div>
           <div class="photo-slot">여행 중 가장 좋았던 순간</div>
         </div>
+      </section>
+
+      <!-- 2026-07-08 추가: 댓글 영역 (giscus — GitHub Discussions 기반, 파일 첨부 가능) -->
+      <section class="section" id="comments" aria-labelledby="comments-title">
+        <div class="section-header">
+          <h2 id="comments-title">댓글</h2>
+          <p class="section-note">GitHub 계정으로 로그인해 댓글을 남길 수 있어요. 사진·파일은 댓글 입력창에 드래그하면 첨부됩니다.</p>
+        </div>
+        <script src="https://giscus.app/client.js"
+          data-repo="jinkyoung-kim/jinkyoung-kim.github.io"
+          data-repo-id="R_kgDOTO2x5w"
+          data-category="General"
+          data-category-id="DIC_kwDOTO2x584DAu5u"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="ko"
+          crossorigin="anonymous"
+          async>
+        </script>
       </section>
     </main>
 
