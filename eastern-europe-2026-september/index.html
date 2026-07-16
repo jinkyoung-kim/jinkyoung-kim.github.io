@@ -33,6 +33,7 @@
     - 2026-07-13 v28: 숙박 '제안' 점검 — 각 도시에 숙소 유형 기준(호텔 1순위·청결/쾌적 우선) 추가, 최신 일정(자그레브 저녁 도착·Hotel Rixos 렌터카 반납 등)에 맞게 위치 근거 보강
     - 2026-07-13 v29: 9/25 플리트비체 숙소 예약 완료 반영 — 하우스 티나(House Tina, 그라보바츠). 도착 시각을 22시 전후로 정정(기존 약 20시)
     - 2026-07-13 v30: 일자별 카드 섹션 신규 추가 (숙박 섹션 아래) — 하루 1카드, 이동·숙소·주요 방문지 요약, 국가별 색 배지·호버 상승 카드 UI
+    - 2026-07-13 v31: 일정표·날짜별 숙박·이동수단 요약 표 3개 삭제하고 일자별 카드로 통합. 고유 콘텐츠(숙박 제안·경로 지도·상세 메모)는 카드 버튼→레이어 팝업으로 이전. 네비 정리(일정/후기/사진/댓글)
 -->
 <html lang="ko">
 <head>
@@ -550,6 +551,15 @@
       font-weight: 700;
     }
 
+    /* 2026-07-13 추가: 카드 하단 액션 버튼(숙소 제안·메모 → 레이어) */
+    .day-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
     .journal {
       display: grid;
       gap: 16px;
@@ -646,10 +656,7 @@
       <a href="/">Jinkyoung Kim</a>
       <nav class="nav-links" aria-label="여행 기록 바로가기">
         <a href="#plan">계획</a>
-        <a href="#itinerary">일정표</a>
-        <a href="#stay">숙박</a>
-        <a href="#daily">데일리</a>
-        <a href="#transport">이동</a>
+        <a href="#daily">일정</a>
         <a href="#journal">후기</a>
         <a href="#photos">사진</a>
         <a href="#comments">댓글</a>
@@ -706,228 +713,15 @@
         </div>
       </section>
 
-      <section class="section" id="itinerary" aria-labelledby="itinerary-title">
-        <div class="section-header">
-          <h2 id="itinerary-title">일자별 일정표</h2>
-          <p class="section-note">Notion export의 일정표를 공개 페이지용으로 정리했습니다.</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>날짜</th>
-                <th>도시/국가</th>
-                <th>이동</th>
-                <th>메모</th>
-              </tr>
-            </thead>
-            <!-- 2026-07-08 수정: 슬로베니아 제외 — 폴란드 → 헝가리(부다페스트) → 크로아티아, 모든 항공 직항 -->
-            <tbody>
-              <tr>
-                <td>9/19 토</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
-                <td>인천에서 바르샤바로 직항 항공 (LOT LO1098), 08:10 → 14:05, 약 12시간 55분 — 예약 완료</td>
-                <td>14:05 도착, 올드타운 산책</td>
-              </tr>
-              <tr>
-                <td>9/20 일</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
-                <td>현지 체류</td>
-                <td>왕궁, 올드타운, 와지엔키 공원</td>
-              </tr>
-              <tr>
-                <td>9/21 월</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Krakow,Poland" target="_blank" rel="noopener">크라쿠프</a></span><br />폴란드</td>
-                <td>바르샤바 자호드니아 11:13 → 크라쿠프 그워브니 14:03 (레오 익스프레스, 약 2시간 50분) — 예약 예정</td>
-                <td>14:03 도착, 오후 구시가지 관광</td>
-              </tr>
-              <tr>
-                <td>9/22 화</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Krakow,Poland" target="_blank" rel="noopener">크라쿠프</a></span><br />폴란드</td>
-                <td>현지 체류</td>
-                <td>비엘리치카 소금광산 또는 아우슈비츠 (연계 반일 투어 검토)</td>
-              </tr>
-              <tr>
-                <td>9/23 수</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Budapest,Hungary" target="_blank" rel="noopener">부다페스트</a></span><br />헝가리</td>
-                <td>크라쿠프에서 직항 항공 (위즈에어 W62420), 09:05 → 10:05, 약 1시간 — 예약 완료</td>
-                <td>오전 10:05 도착, 부다 왕궁 지구·세체니 다리·어부의 요새</td>
-              </tr>
-              <tr>
-                <td>9/24 목</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Budapest,Hungary" target="_blank" rel="noopener">부다페스트</a></span><br />헝가리</td>
-                <td>현지 체류</td>
-                <td>국회의사당, 세체니 온천, 다뉴브 야경 크루즈</td>
-              </tr>
-              <tr>
-                <td>9/25 금</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Zagreb,Croatia" target="_blank" rel="noopener">자그레브</a> 도착 → <a href="https://www.google.com/maps/search/?api=1&amp;query=Plitvice+Lakes+National+Park,Croatia" target="_blank" rel="noopener">플리트비체</a></span><br />크로아티아</td>
-                <td>부다페스트에서 자그레브로 항공 (LOT LO536+LO613, 1회 경유), 12:45 → 17:25, 약 4시간 40분 — 예약 완료. 자그레브 공항 18:00 렌터카 수령 후 플리트비체 남하, 약 2시간</td>
-                <td>하우스 티나(그라보바츠) 1박 — 도착 22시 전후, 국립공원 관광은 9/26 오전</td>
-              </tr>
-              <tr>
-                <td>9/26 토</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Split,Croatia" target="_blank" rel="noopener">스플리트</a></span><br />크로아티아</td>
-                <td>오전 플리트비체 국립공원 관광 후 스플리트로 렌터카 이동, 약 2.5~3시간</td>
-                <td>공원 관광 후 남하, 해안도로 드라이브</td>
-              </tr>
-              <tr>
-                <td>9/27 일</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Split,Croatia" target="_blank" rel="noopener">스플리트</a></span><br />크로아티아</td>
-                <td>현지 체류</td>
-                <td>디오클레티아누스 궁전, 리바 해변 산책, 트로기르 옵션</td>
-              </tr>
-              <tr>
-                <td>9/28 월</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubrovnik,Croatia" target="_blank" rel="noopener">두브로브니크</a></span><br />크로아티아</td>
-                <td>스플리트에서 렌터카 이동, 약 3시간 — 두브로브니크 16:00까지 렌터카 반납 (Hotel Rixos 지점)</td>
-                <td>오전 스플리트 출발, 렌터카 반납 후 성벽 야경</td>
-              </tr>
-              <tr>
-                <td>9/29 화</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubrovnik,Croatia" target="_blank" rel="noopener">두브로브니크</a></span><br />크로아티아</td>
-                <td>현지 체류</td>
-                <td>성벽, 케이블카, 올드타운</td>
-              </tr>
-              <tr>
-                <td>9/30 수</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dubrovnik,Croatia" target="_blank" rel="noopener">두브로브니크</a></span><br />크로아티아</td>
-                <td>현지 체류</td>
-                <td>로크룸 섬 (페리 15분), 여유 일정</td>
-              </tr>
-              <tr>
-                <td>10/1 목</td>
-                <td><span class="city"><a href="https://www.google.com/maps/search/?api=1&amp;query=Warsaw,Poland" target="_blank" rel="noopener">바르샤바</a></span><br />폴란드</td>
-                <td>두브로브니크에서 저녁 직항 항공 (LOT LO566), 19:15 → 21:10, 약 1시간 55분 — 예약 완료</td>
-                <td>낮 두브로브니크 여유, 공항 이동은 버스/택시 약 30분, 21:10 바르샤바 도착</td>
-              </tr>
-              <tr>
-                <td>10/2 금</td>
-                <td><span class="city">귀국</span></td>
-                <td>바르샤바 13:15 → 브로츠와프 14:15 (LO3843) / 브로츠와프 16:45 → 인천 익일 10:55 (LO2005) — 예약 완료</td>
-                <td>국내선 연결 후 귀국, 10/3(토) 10:55 인천 도착</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- 2026-07-08 수정: 경로 지도는 버튼 클릭 시 모달로 표시 -->
-        <p class="map-open-wrap">
-          <button type="button" class="map-open" id="map-open">지도 보기</button>
-        </p>
-      </section>
-
-      <!-- 2026-07-07 추가: 날짜별 숙박 표 (숙소는 예약 확정 시 업데이트) -->
-      <section class="section" id="stay" aria-labelledby="stay-title">
-        <div class="section-header">
-          <h2 id="stay-title">날짜별 숙박</h2>
-          <p class="section-note">숙소는 예약하는 대로 업데이트합니다. '제안'을 누르면 동선·방문지 기준 추천 위치와 숙소 유형을 볼 수 있습니다 (호텔 1순위, 조건 좋으면 아파트·게스트하우스도 가능 · 고급보다 청결·쾌적 우선).</p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>날짜 (숙박일 밤 기준)</th>
-                <th>숙박 도시</th>
-                <th>숙소</th>
-                <th>비고</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>9/19 토</td>
-                <td><span class="city">바르샤바</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="warsaw-front">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/20 일</td>
-                <td><span class="city">바르샤바</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="warsaw-front">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/21 월</td>
-                <td><span class="city">크라쿠프</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="krakow">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/22 화</td>
-                <td><span class="city">크라쿠프</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="krakow">제안</button></td>
-                <td>9/23 오전 공항 이동 — 발리체 공항 시내에서 20~30분</td>
-              </tr>
-              <tr>
-                <td>9/23 수</td>
-                <td><span class="city">부다페스트</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="budapest">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/24 목</td>
-                <td><span class="city">부다페스트</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="budapest">제안</button></td>
-                <td>9/25 12:45 자그레브행 항공 (예약 완료) — 공항 접근성 고려 (렌터카는 자그레브 도착 후 수령)</td>
-              </tr>
-              <tr>
-                <td>9/25 금</td>
-                <td><span class="city">플리트비체</span></td>
-                <td><a href="https://maps.app.goo.gl/axqzCynTzKX7yagK7" target="_blank" rel="noopener">하우스 티나 (House Tina)</a> · 예약 완료</td>
-                <td>그라보바츠 마을, 공원까지 차로 약 10분 (자그레브 방향 길목). 개인 욕실·조식·주차 포함</td>
-              </tr>
-              <tr>
-                <td>9/26 토</td>
-                <td><span class="city">스플리트</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="split">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/27 일</td>
-                <td><span class="city">스플리트</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="split">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/28 월</td>
-                <td><span class="city">두브로브니크</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="dubrovnik">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/29 화</td>
-                <td><span class="city">두브로브니크</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="dubrovnik">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>9/30 수</td>
-                <td><span class="city">두브로브니크</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="dubrovnik">제안</button></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>10/1 목</td>
-                <td><span class="city">바르샤바</span></td>
-                <td><button type="button" class="stay-suggest" data-stay="warsaw-back">제안</button></td>
-                <td>21:10 늦은 도착 — 체크인 시간 사전 공지, 10/2 13:15 출발 고려 공항 접근성</td>
-              </tr>
-              <tr>
-                <td>10/2 금</td>
-                <td><span class="city">기내</span></td>
-                <td>—</td>
-                <td>브로츠와프 16:45 → 인천 익일 10:55 야간 비행</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- 2026-07-13 추가: 일자별 카드 (하루 = 카드 1개, 이동·숙소·주요 방문지 요약) -->
+      <!-- 2026-07-13 재구성: 일정표·숙박·이동 표를 삭제하고 일자별 카드로 통합. 상세(숙박 제안·메모)는 버튼→레이어 -->
       <section class="section" id="daily" aria-labelledby="daily-title">
         <div class="section-header">
           <h2 id="daily-title">일자별 카드</h2>
-          <p class="section-note">하루 단위로 이동·숙소·주요 방문지를 한눈에 정리했습니다.</p>
+          <p class="section-note">하루 단위로 이동·숙소·주요 방문지를 정리했습니다. 카드의 '숙소 제안'·'메모' 버튼을 누르면 상세를 레이어로 볼 수 있습니다.</p>
         </div>
+        <p class="map-open-wrap">
+          <button type="button" class="map-open" id="map-open">전체 경로 지도 보기</button>
+        </p>
         <div class="day-cards">
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge pl">9/19 토</span><span class="day-country">폴란드</span></div>
@@ -937,6 +731,10 @@
               <li><span class="label">숙소</span><span>바르샤바 시내 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>14:05 도착, 올드타운 산책</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="warsaw-front">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0919">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge pl">9/20 일</span><span class="day-country">폴란드</span></div>
@@ -946,6 +744,9 @@
               <li><span class="label">숙소</span><span>바르샤바 시내 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>왕궁, 올드타운, 와지엔키 공원</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="warsaw-front">숙소 제안</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge pl">9/21 월</span><span class="day-country">폴란드</span></div>
@@ -955,6 +756,10 @@
               <li><span class="label">숙소</span><span>크라쿠프 구시가지 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>오후 구시가지 관광</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="krakow">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0921">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge pl">9/22 화</span><span class="day-country">폴란드</span></div>
@@ -964,6 +769,10 @@
               <li><span class="label">숙소</span><span>크라쿠프 구시가지 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>비엘리치카 소금광산 또는 아우슈비츠 (연계 반일 투어)</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="krakow">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0922">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hu">9/23 수</span><span class="day-country">헝가리</span></div>
@@ -973,6 +782,10 @@
               <li><span class="label">숙소</span><span>부다페스트 페스트 5구역 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>부다 왕궁 지구, 세체니 다리, 어부의 요새</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="budapest">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0923">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hu">9/24 목</span><span class="day-country">헝가리</span></div>
@@ -982,15 +795,23 @@
               <li><span class="label">숙소</span><span>부다페스트 페스트 5구역 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>국회의사당, 세체니 온천, 다뉴브 야경 크루즈</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="budapest">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0924">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hr">9/25 금</span><span class="day-country">헝가리 → 크로아티아</span></div>
             <h3>자그레브 → 플리트비체</h3>
             <ul class="day-rows">
-              <li><span class="label">이동</span><span>부다페스트 → 자그레브 항공 (LOT LO536+LO613) 12:45→17:25 · <span class="booked">예약 완료</span>. 자그레브 공항 18:00 렌터카 수령 후 남하</span></li>
+              <li><span class="label">이동</span><span>부다페스트 → 자그레브 항공 (LOT LO536+LO613) 12:45→17:25 · <span class="booked">예약 완료</span>. 공항 18:00 렌터카 수령 후 남하</span></li>
               <li><span class="label">숙소</span><span><a href="https://maps.app.goo.gl/axqzCynTzKX7yagK7" target="_blank" rel="noopener">하우스 티나 (그라보바츠)</a> · <span class="booked">예약 완료</span></span></li>
               <li><span class="label">방문</span><span>22시 전후 도착 — 국립공원 관광은 9/26 오전</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="plitvice">숙소 정보</button>
+              <button type="button" class="stay-suggest" data-detail="d0925">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hr">9/26 토</span><span class="day-country">크로아티아</span></div>
@@ -1000,6 +821,10 @@
               <li><span class="label">숙소</span><span>스플리트 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>플리트비체 국립공원(오전), 해안도로 드라이브</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="split">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0926">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hr">9/27 일</span><span class="day-country">크로아티아</span></div>
@@ -1009,6 +834,10 @@
               <li><span class="label">숙소</span><span>스플리트 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>디오클레티아누스 궁전, 리바 해변, 트로기르(옵션)</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="split">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0927">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hr">9/28 월</span><span class="day-country">크로아티아</span></div>
@@ -1018,6 +847,10 @@
               <li><span class="label">숙소</span><span>두브로브니크 라파드~바빈쿡 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>렌터카 반납 후 성벽 야경</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="dubrovnik">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0928">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hr">9/29 화</span><span class="day-country">크로아티아</span></div>
@@ -1027,6 +860,9 @@
               <li><span class="label">숙소</span><span>두브로브니크 라파드~바빈쿡 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>성벽, 케이블카, 올드타운</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="dubrovnik">숙소 제안</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge hr">9/30 수</span><span class="day-country">크로아티아</span></div>
@@ -1036,6 +872,10 @@
               <li><span class="label">숙소</span><span>두브로브니크 라파드~바빈쿡 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>로크룸 섬 (페리 15분), 여유 일정</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="dubrovnik">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d0930">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge pl">10/1 목</span><span class="day-country">크로아티아 → 폴란드</span></div>
@@ -1045,6 +885,10 @@
               <li><span class="label">숙소</span><span>바르샤바 중앙역 일대 (예약 예정)</span></li>
               <li><span class="label">방문</span><span>낮 두브로브니크 여유, 21:10 바르샤바 도착</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-stay="warsaw-back">숙소 제안</button>
+              <button type="button" class="stay-suggest" data-detail="d1001">메모</button>
+            </div>
           </article>
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge home">10/2 금</span><span class="day-country">귀국</span></div>
@@ -1054,100 +898,10 @@
               <li><span class="label">숙소</span><span>기내 (야간 비행)</span></li>
               <li><span class="label">방문</span><span>10/3(토) 10:55 인천 도착</span></li>
             </ul>
+            <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-detail="d1002">메모</button>
+            </div>
           </article>
-        </div>
-      </section>
-
-      <section class="section" id="transport" aria-labelledby="transport-title">
-        <div class="section-header">
-          <h2 id="transport-title">이동수단 요약</h2>
-          <p class="section-note">도시 간 이동을 날짜순 표로 정리했습니다. 예약 전 확인용.</p>
-        </div>
-        <!-- 2026-07-08 수정: 수단별 카드 구성에서 날짜순 표로 재구성 -->
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>날짜</th>
-                <th>구간</th>
-                <th>수단</th>
-                <th>시간</th>
-                <th>비고</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>9/19 토</td>
-                <td>인천 → 바르샤바</td>
-                <td>항공 · LOT LO1098 직항</td>
-                <td>08:10 → 14:05 (약 12시간 55분)</td>
-                <td>예약 완료</td>
-              </tr>
-              <tr>
-                <td>9/21 월</td>
-                <td>바르샤바 (자호드니아) → 크라쿠프 (그워브니)</td>
-                <td>열차 · 레오 익스프레스 LE402-PL</td>
-                <td>11:13 → 14:03 (약 2시간 50분)</td>
-                <td>예약 예정 — 이코노미석 표준형</td>
-              </tr>
-              <tr>
-                <td>9/23 수</td>
-                <td>크라쿠프 → 부다페스트</td>
-                <td>항공 · 위즈에어 직항 (W62420)</td>
-                <td>09:05 → 10:05 (약 1시간)</td>
-                <td>예약 완료 — 위탁 수하물 요금 별도. 크라쿠프 공항은 시내에서 20~30분</td>
-              </tr>
-              <tr>
-                <td>9/25 금</td>
-                <td>부다페스트 → 자그레브</td>
-                <td>항공 · LOT 1회 경유 (LO536+LO613)</td>
-                <td>12:45 → 17:25 (약 4시간 40분)</td>
-                <td>예약 완료 — 1회 경유편, 오후 17:25 자그레브 도착. 동일 항공사 연결이라 수하물 최종 목적지까지 처리</td>
-              </tr>
-              <tr>
-                <td>9/25 금</td>
-                <td>자그레브 → 플리트비체</td>
-                <td>렌터카 (BMW X1)</td>
-                <td>약 2시간</td>
-                <td>예약 완료 — 자그레브 공항 18:00 수령. 그라보바츠(하우스 티나) 22시 전후 도착, 공원 관광은 9/26 오전</td>
-              </tr>
-              <tr>
-                <td>9/26 토</td>
-                <td>플리트비체 → 스플리트</td>
-                <td>렌터카</td>
-                <td>약 2.5~3시간</td>
-                <td>오전 공원 관광 후 남하, 해안도로 드라이브</td>
-              </tr>
-              <tr>
-                <td>9/28 월</td>
-                <td>스플리트 → 두브로브니크</td>
-                <td>렌터카</td>
-                <td>약 3시간</td>
-                <td>해안도로 드라이브, 펠레샤츠 대교 경유. <strong>렌터카 반납</strong> — 9/25 자그레브 공항 수령 ~ 9/28 16:00 두브로브니크 반납(Hotel Rixos 지점), 총 3일 · 크로아티아 국내 편도. 반납 시각(16:00)에 맞춰 스플리트 오전 출발</td>
-              </tr>
-              <tr>
-                <td>10/1 목</td>
-                <td>두브로브니크 → 바르샤바</td>
-                <td>항공 · LOT 직항 (LO566)</td>
-                <td>19:15 → 21:10 (약 1시간 55분)</td>
-                <td>예약 완료 — 공항까지 버스/택시 약 30분. 귀국 전날 저녁 편 — 지연 시 10/2 항공 영향 유의</td>
-              </tr>
-              <tr>
-                <td>10/2 금</td>
-                <td>바르샤바 → 브로츠와프</td>
-                <td>항공 · LOT LO3843 직항</td>
-                <td>13:15 → 14:15 (약 1시간)</td>
-                <td>예약 완료</td>
-              </tr>
-              <tr>
-                <td>10/2 금</td>
-                <td>브로츠와프 → 인천</td>
-                <td>항공 · LOT LO2005 직항</td>
-                <td>16:45 → 익일 10:55 (약 11시간 10분)</td>
-                <td>예약 완료 — 10/3(토) 인천 도착</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
@@ -1331,13 +1085,91 @@
         }
       };
 
+      // 2026-07-13 추가: 일자별 카드 '메모' 버튼용 상세 데이터
+      var DAY_DETAILS = {
+        "d0919": {
+          title: "9/19 (토) 바르샤바 · 메모",
+          body:
+            "<p><strong>항공</strong>: 인천 → 바르샤바 LOT LO1098, 08:10→14:05 (약 12시간 55분) · 예약 완료.</p>" +
+            "<p><strong>숙소 팁</strong>: 9/19~20과 10/1 바르샤바 숙소를 같은 곳으로 잡으면 짐 보관·익숙함에 유리합니다 (숙소 정책 확인).</p>"
+        },
+        "d0921": {
+          title: "9/21 (월) 크라쿠프 · 메모",
+          body:
+            "<p><strong>열차</strong>: 바르샤바 자호드니아 11:13 → 크라쿠프 그워브니 14:03 (레오 익스프레스 LE402-PL, 약 2시간 50분) · 예약 예정(시각 확정, 결제만 남음).</p>" +
+            "<p><strong>참고</strong>: 자호드니아역은 중앙역에서 근교선 한 정거장 거리입니다.</p>"
+        },
+        "d0922": {
+          title: "9/22 (화) 크라쿠프 · 메모",
+          body:
+            "<p><strong>입장권</strong>: 아우슈비츠 무료 입장권은 수 주 전 매진이 잦아 조기 예매가 필수입니다.</p>" +
+            "<p><strong>동선</strong>: 아우슈비츠와 비엘리치카 소금광산을 연계 반일 투어로 하루에 소화할 수 있습니다.</p>"
+        },
+        "d0923": {
+          title: "9/23 (수) 부다페스트 · 메모",
+          body:
+            "<p><strong>항공</strong>: 크라쿠프 → 부다페스트 위즈에어 W62420, 09:05→10:05 (약 1시간) · 예약 완료.</p>" +
+            "<p><strong>주의</strong>: 위즈에어(LCC)는 위탁 수하물 요금이 별도이니 수하물 포함 총액으로 예약하세요. 크라쿠프 발리체 공항은 시내에서 20~30분(이른 아침 택시).</p>"
+        },
+        "d0924": {
+          title: "9/24 (목) 부다페스트 · 메모",
+          body:
+            "<p><strong>온천/크루즈</strong>: 세체니 온천은 오전이 한적하고, 다뉴브 야경 크루즈는 일몰 시간대(9월 말 18:30 전후) 예약을 권합니다.</p>" +
+            "<p><strong>추가</strong>: 겔레르트 언덕은 다뉴브강·국회의사당 야경 명소입니다.</p>"
+        },
+        "d0925": {
+          title: "9/25 (금) 자그레브 → 플리트비체 · 메모",
+          body:
+            "<p><strong>항공</strong>: 부다페스트 → 자그레브 LOT LO536+LO613 (1회 경유), 12:45→17:25 (약 4시간 40분) · 예약 완료.</p>" +
+            "<p><strong>렌터카</strong>: 자그레브 공항 18:00 수령 (BMW X1) → 하우스 티나(그라보바츠) 22시 전후 도착. 늦은 체크인은 미리 공지.</p>" +
+            "<p><strong>입장권</strong>: 플리트비체는 시간대별 온라인 사전 예매가 필수입니다.</p>" +
+            "<p><strong>관광 시간</strong>: 9/26 오전 첫 입장 기준 4~5시간(C 또는 H 코스) 잡고 정오쯤 스플리트로 출발하면 무리가 없습니다.</p>"
+        },
+        "d0926": {
+          title: "9/26 (토) 스플리트 · 메모",
+          body:
+            "<p><strong>이동</strong>: 오전 플리트비체 관광 후 스플리트로 렌터카 약 2.5~3시간. 개장 직후 입장이 정체·더위 회피에 유리합니다.</p>"
+        },
+        "d0927": {
+          title: "9/27 (일) 스플리트 · 메모",
+          body:
+            "<p><strong>주차</strong>: 디오클레티아누스 궁전 일대는 차량 진입 불가·주차난이 심하니 도보권+주차 되는 숙소가 좋습니다.</p>" +
+            "<p><strong>옵션</strong>: 트로기르(차로 30분, 유네스코 구시가지) 반나절 코스 추천.</p>"
+        },
+        "d0928": {
+          title: "9/28 (월) 두브로브니크 · 메모",
+          body:
+            "<p><strong>이동</strong>: 스플리트 → 두브로브니크 약 3시간. 펠레샤츠 대교로 보스니아 국경 통과 없이 이동합니다.</p>" +
+            "<p><strong>렌터카 반납</strong>: 9/28 16:00 두브로브니크 Hotel Rixos 반납 — 반납 시각에 맞춰 스플리트를 오전에 출발하세요. 이후 이동은 버스/택시.</p>"
+        },
+        "d0930": {
+          title: "9/30 (수) 두브로브니크 · 메모",
+          body:
+            "<p><strong>로크룸 섬</strong>: 구항구에서 페리 15분. 성벽·케이블카 관광 후 오후 일정으로 적합합니다.</p>"
+        },
+        "d1001": {
+          title: "10/1 (목) 바르샤바 · 메모",
+          body:
+            "<p><strong>항공</strong>: 두브로브니크 → 바르샤바 LOT LO566, 19:15→21:10 (약 1시간 55분) · 예약 완료.</p>" +
+            "<p><strong>주의</strong>: 귀국(10/2) 전날 저녁 편이라 지연 시 영향이 있으니 여행자보험 등 대비를 권합니다. 공항까지 버스/택시 약 30분, 바르샤바 숙소는 21:10 도착 기준 늦은 체크인 확인.</p>"
+        },
+        "d1002": {
+          title: "10/2 (금) 귀국 · 메모",
+          body:
+            "<p><strong>항공</strong>: 바르샤바 13:15 → 브로츠와프 14:15 (LO3843) / 브로츠와프 16:45 → 인천 익일 10:55 (LO2005) · 예약 완료.</p>" +
+            "<p><strong>참고</strong>: 브로츠와프 환승 2시간 30분(동일 항공사 연결). 10/3(토) 10:55 인천 도착.</p>"
+        }
+      };
+
       var dialog = document.getElementById("stay-dialog");
       var dialogTitle = document.getElementById("stay-dialog-title");
       var dialogBody = document.getElementById("stay-dialog-body");
 
       document.querySelectorAll(".stay-suggest").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          var data = STAY_SUGGESTIONS[btn.getAttribute("data-stay")];
+          var data = btn.hasAttribute("data-detail")
+            ? DAY_DETAILS[btn.getAttribute("data-detail")]
+            : STAY_SUGGESTIONS[btn.getAttribute("data-stay")];
           if (!data) return;
           dialogTitle.textContent = data.title;
           dialogBody.innerHTML = data.body;
