@@ -34,6 +34,7 @@
     - 2026-07-13 v29: 9/25 플리트비체 숙소 예약 완료 반영 — 하우스 티나(House Tina, 그라보바츠). 도착 시각을 22시 전후로 정정(기존 약 20시)
     - 2026-07-13 v30: 일자별 카드 섹션 신규 추가 (숙박 섹션 아래) — 하루 1카드, 이동·숙소·주요 방문지 요약, 국가별 색 배지·호버 상승 카드 UI
     - 2026-07-13 v31: 일정표·날짜별 숙박·이동수단 요약 표 3개 삭제하고 일자별 카드로 통합. 고유 콘텐츠(숙박 제안·경로 지도·상세 메모)는 카드 버튼→레이어 팝업으로 이전. 네비 정리(일정/후기/사진/댓글)
+    - 2026-07-13 v32: '전체 경로 지도 보기' 버튼·지도 모달·관련 JS 제거, 일자별 카드 마우스 오버 상승 효과(transform) 제거
 -->
 <html lang="ko">
 <head>
@@ -366,33 +367,6 @@
       text-align: left;
     }
 
-    .map-dialog {
-      width: min(720px, calc(100% - 32px));
-      max-height: 90vh;
-      padding: 0;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper);
-      color: var(--ink);
-      box-shadow: var(--shadow);
-    }
-
-    .map-dialog::backdrop {
-      background: rgba(38, 50, 56, 0.45);
-    }
-
-    .map-dialog-body {
-      padding: 12px 22px 22px;
-    }
-
-    .map-dialog-body img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border: 1px solid rgba(222, 214, 200, 0.92);
-      border-radius: 8px;
-    }
-
     .summary-list {
       display: grid;
       gap: 10px;
@@ -480,12 +454,6 @@
       border-radius: 12px;
       background: var(--paper);
       box-shadow: 0 10px 28px rgba(38, 50, 56, 0.06);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .day-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(38, 50, 56, 0.13);
     }
 
     .day-card-head {
@@ -719,9 +687,6 @@
           <h2 id="daily-title">일자별 카드</h2>
           <p class="section-note">하루 단위로 이동·숙소·주요 방문지를 정리했습니다. 카드의 '숙소 제안'·'메모' 버튼을 누르면 상세를 레이어로 볼 수 있습니다.</p>
         </div>
-        <p class="map-open-wrap">
-          <button type="button" class="map-open" id="map-open">전체 경로 지도 보기</button>
-        </p>
         <div class="day-cards">
           <article class="day-card">
             <div class="day-card-head"><span class="day-badge pl">9/19 토</span><span class="day-country">폴란드</span></div>
@@ -1001,21 +966,6 @@
     </footer>
   </div>
 
-  <!-- 2026-07-08 추가: 경로 지도 모달 ('지도 보기' 버튼 클릭 시 표시) -->
-  <dialog class="map-dialog" id="map-dialog" aria-labelledby="map-dialog-title">
-    <div class="stay-dialog-head">
-      <h3 id="map-dialog-title">방문 도시 경로 지도 (경로 변경 전 버전 — 부다페스트 반영 지도로 교체 예정)</h3>
-      <button type="button" class="stay-dialog-close" id="map-dialog-close" aria-label="닫기">&times;</button>
-    </div>
-    <div class="map-dialog-body">
-      <img
-        src="images/route-map-20260706.png"
-        alt="여행 경로 지도 (경로 변경 전 버전): 바르샤바, 브로츠와프, 크라쿠프, 플리트비체 국립공원, 스플리트, 두브로브니크 등이 핀으로 표시된 동유럽 지도 — 부다페스트가 포함된 새 지도로 교체 예정"
-        loading="lazy"
-      />
-    </div>
-  </dialog>
-
   <!-- 2026-07-07 추가: 숙박 위치 제안 레이어 (숙박 표 '제안' 버튼 클릭 시 표시) -->
   <dialog class="stay-dialog" id="stay-dialog" aria-labelledby="stay-dialog-title">
     <div class="stay-dialog-head">
@@ -1184,18 +1134,6 @@
       // 레이어 바깥(배경) 클릭 시 닫기
       dialog.addEventListener("click", function (event) {
         if (event.target === dialog) dialog.close();
-      });
-
-      // 2026-07-08 추가: 경로 지도 모달 열기/닫기
-      var mapDialog = document.getElementById("map-dialog");
-      document.getElementById("map-open").addEventListener("click", function () {
-        mapDialog.showModal();
-      });
-      document.getElementById("map-dialog-close").addEventListener("click", function () {
-        mapDialog.close();
-      });
-      mapDialog.addEventListener("click", function (event) {
-        if (event.target === mapDialog) mapDialog.close();
       });
     })();
   </script>
