@@ -36,6 +36,7 @@
     - 2026-07-13 v31: 일정표·날짜별 숙박·이동수단 요약 표 3개 삭제하고 일자별 카드로 통합. 고유 콘텐츠(숙박 제안·경로 지도·상세 메모)는 카드 버튼→레이어 팝업으로 이전. 네비 정리(일정/후기/사진/댓글)
     - 2026-07-13 v32: '전체 경로 지도 보기' 버튼·지도 모달·관련 JS 제거, 일자별 카드 마우스 오버 상승 효과(transform) 제거
     - 2026-07-13 v33: '여행 계획'·'검토 메모와 후기'에서 일자별 카드(메모·제안 포함)와 중복되는 내용 제거 — 계획은 '예약 현황과 남은 준비'만, 후기는 '여행 후 업데이트 예정'만 유지
+    - 2026-07-17 v34: '검토 메모와 후기' 섹션 및 네비 '후기' 링크 제거
 -->
 <html lang="ko">
 <head>
@@ -626,7 +627,6 @@
       <nav class="nav-links" aria-label="여행 기록 바로가기">
         <a href="#plan">계획</a>
         <a href="#daily">일정</a>
-        <a href="#journal">후기</a>
         <a href="#photos">사진</a>
         <a href="#comments">댓글</a>
         <a href="/">홈</a>
@@ -846,22 +846,6 @@
             <div class="day-card-actions">
               <button type="button" class="stay-suggest" data-detail="d1002">메모</button>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="journal" aria-labelledby="journal-title">
-        <div class="section-header">
-          <h2 id="journal-title">검토 메모와 후기</h2>
-          <p class="section-note">여행 후에 실제 후기를 업데이트합니다. (계획·팁 등 상세는 '일자별 카드'로 이동)</p>
-        </div>
-        <div class="journal">
-          <article class="entry">
-            <h3>여행 후 업데이트 예정</h3>
-            <p>
-              실제 이동 난이도, 좋았던 도시, 아쉬웠던 일정, 추천 장소, 다시 가고 싶은 코스를
-              여행 후 정리합니다. 사진은 대표 컷부터 순차적으로 추가합니다.
-            </p>
           </article>
         </div>
       </section>
