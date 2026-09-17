@@ -46,6 +46,7 @@
     - 2026-09-17 v41: 일자별 카드에 '방문 추천지' 버튼·레이어 팝업 추가 — 각 날짜의 도착/출발 시각·숙소 위치·가용 시간을 반영한 도시별 추천지(제안). 9/19~10/1 13개 카드
     - 2026-09-17 v42: 숙소 예약 완료에 맞춰 버튼 라벨 '숙소 제안' → '숙소 정보'로 통일(12→0), 데일리 섹션 안내문도 반영
     - 2026-09-17 v43: '사진' 섹션 제거, 그 자리에 '화폐·결제' 섹션 신규 추가(나라별 화폐·환율·결제 팁). 네비 '사진'→'화폐'
+    - 2026-09-17 v44: 현장 결제 필요 숙소 표시(.onsite) — 폴로니아 팰리스(9/19~20)·하우스 티나(9/25). 카드 숙소 행·팝업·메모에 '현장 결제' 명시
 -->
 <html lang="ko">
 <head>
@@ -519,6 +520,12 @@
       font-weight: 700;
     }
 
+    /* 2026-09-17 추가: 현장 결제(선결제 아님) 표시 — 눈에 띄도록 와인색 */
+    .onsite {
+      color: var(--wine);
+      font-weight: 700;
+    }
+
     /* 2026-07-13 추가: 카드 하단 액션 버튼(숙소 제안·메모 → 레이어) */
     .day-card-actions {
       display: flex;
@@ -663,7 +670,7 @@
             <h3>바르샤바</h3>
             <ul class="day-rows">
               <li><span class="label">이동</span><span>인천 → 바르샤바 항공 (LO1098) 08:10→14:05 · <span class="booked">예약 완료</span></span></li>
-              <li><span class="label">숙소</span><span><a href="https://www.poloniapalace.com/" target="_blank" rel="noopener">폴로니아 팰리스 호텔</a> (수페리어 트윈) · <span class="booked">예약 완료</span></span></li>
+              <li><span class="label">숙소</span><span><a href="https://www.poloniapalace.com/" target="_blank" rel="noopener">폴로니아 팰리스 호텔</a> (수페리어 트윈) · <span class="booked">예약 완료</span> · <span class="onsite">현장 결제</span></span></li>
               <li><span class="label">방문</span><span>14:05 도착, 올드타운 산책</span></li>
             </ul>
             <div class="day-card-actions">
@@ -677,7 +684,7 @@
             <h3>바르샤바</h3>
             <ul class="day-rows">
               <li><span class="label">이동</span><span>현지 체류</span></li>
-              <li><span class="label">숙소</span><span><a href="https://www.poloniapalace.com/" target="_blank" rel="noopener">폴로니아 팰리스 호텔</a> (수페리어 트윈) · <span class="booked">예약 완료</span></span></li>
+              <li><span class="label">숙소</span><span><a href="https://www.poloniapalace.com/" target="_blank" rel="noopener">폴로니아 팰리스 호텔</a> (수페리어 트윈) · <span class="booked">예약 완료</span> · <span class="onsite">현장 결제</span></span></li>
               <li><span class="label">방문</span><span>왕궁, 올드타운, 와지엔키 공원</span></li>
             </ul>
             <div class="day-card-actions">
@@ -746,7 +753,7 @@
             <h3>자그레브 → 플리트비체</h3>
             <ul class="day-rows">
               <li><span class="label">이동</span><span>부다페스트 → 자그레브 항공 (LOT LO536+LO613) 12:45→17:25 · <span class="booked">예약 완료</span>. 공항 18:00 렌터카 수령 후 남하</span></li>
-              <li><span class="label">숙소</span><span><a href="https://maps.app.goo.gl/axqzCynTzKX7yagK7" target="_blank" rel="noopener">하우스 티나 (그라보바츠)</a> · <span class="booked">예약 완료</span></span></li>
+              <li><span class="label">숙소</span><span><a href="https://maps.app.goo.gl/axqzCynTzKX7yagK7" target="_blank" rel="noopener">하우스 티나 (그라보바츠)</a> · <span class="booked">예약 완료</span> · <span class="onsite">현장 결제</span></span></li>
               <li><span class="label">방문</span><span>22시 전후 도착 — 국립공원 관광은 9/26 오전</span></li>
             </ul>
             <div class="day-card-actions">
@@ -959,7 +966,7 @@
           title: "플리트비체 (9/25) 숙박 위치 제안",
           body:
             "<p><strong>추천 영역</strong>: 공원 1·2번 게이트 인근 또는 무키녜·예제르체 마을</p>" +
-            "<p><strong>예약 완료</strong>: 하우스 티나(House Tina, 그라보바츠) — 공원 북쪽 약 10분, 개인 욕실·조식·주차 포함. 9/25 22시 전후 도착 → 9/26 아침 개장 직후 입장 → 스플리트 남하 동선과 일치.</p>" +
+            "<p><strong>예약 완료</strong>: 하우스 티나(House Tina, 그라보바츠) — 공원 북쪽 약 10분, 개인 욕실·조식·주차 포함. 9/25 22시 전후 도착 → 9/26 아침 개장 직후 입장 → 스플리트 남하 동선과 일치. <span class='onsite'>현장 결제</span>(카드는 보증용, 144 EUR).</p>" +
             "<p><strong>숙소 유형</strong>: 게이트 옆 공원 호텔(Jezero 등)이 편리하지만 조기 매진이 잦습니다. 마을의 깨끗한 게스트하우스·펜션도 충분히 쾌적하고 주차·조식 포함이 많아 좋은 대안. <strong>저녁 늦게 도착하므로 늦은/셀프 체크인 가능 숙소</strong>를 우선하세요.</p>"
         },
         "split": {
@@ -1024,6 +1031,7 @@
           body:
             "<p><strong>항공</strong>: 부다페스트 → 자그레브 LOT LO536+LO613 (1회 경유), 12:45→17:25 (약 4시간 40분) · 예약 완료.</p>" +
             "<p><strong>렌터카</strong>: 자그레브 공항 18:00 수령 (BMW X1) → 하우스 티나(그라보바츠) 22시 전후 도착. 늦은 체크인은 미리 공지.</p>" +
+            "<p><strong>숙소 결제</strong>: 하우스 티나는 <span class='onsite'>현장 결제</span>(144 EUR) — 카드는 보증용으로만 등록. 체크인/아웃 시 결제.</p>" +
             "<p><strong>입장권</strong>: 플리트비체는 시간대별 온라인 사전 예매가 필수입니다.</p>" +
             "<p><strong>관광 시간</strong>: 9/26 오전 첫 입장 기준 4~5시간(C 또는 H 코스) 잡고 정오쯤 스플리트로 출발하면 무리가 없습니다.</p>"
         },
