@@ -43,6 +43,7 @@
     - 2026-07-17 v38: 10/1 바르샤바 숙소 예약 완료 반영 — 홀리데이 인 바르샤바 시티센터(트윈 스탠다드, 조식 포함, 1박). 전 구간 숙소 예약 완료
     - 2026-07-17 v39: 9/21 바르샤바→크라쿠프 열차 예약 완료 반영 — PKP 인터시티 EIP 1304, 첸트랄나 10:40→그워브니 12:57, 2등석 5호차 95·97. (기존 레오 익스프레스 11:13→14:03에서 변경). 개인정보 제외. 남은 준비는 입장권/투어만
     - 2026-09-07 v40: 9/22 비엘리치카 소금광산 투어 예약 완료 반영 — 관광 루트, 영어 가이드 11:00, 2매. 아우슈비츠 생략 확정, 오후는 바벨성·카지미에시(+α). 카드·메모·롤업 갱신
+    - 2026-09-17 v41: 일자별 카드에 '방문 추천지' 버튼·레이어 팝업 추가 — 각 날짜의 도착/출발 시각·숙소 위치·가용 시간을 반영한 도시별 추천지(제안). 9/19~10/1 13개 카드
 -->
 <html lang="ko">
 <head>
@@ -339,6 +340,16 @@
 
     .stay-dialog-body strong {
       color: var(--forest);
+    }
+
+    /* 2026-09-17 추가: 방문 추천지 팝업의 목록 스타일 */
+    .stay-dialog-body ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .stay-dialog-body li {
+      margin: 6px 0;
     }
 
     /* 2026-07-08 수정: 경로 지도는 '지도 보기' 버튼 클릭 시 모달로 표시 */
@@ -683,6 +694,7 @@
               <li><span class="label">방문</span><span>14:05 도착, 올드타운 산책</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0919">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="warsaw-front">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0919">메모</button>
             </div>
@@ -696,6 +708,7 @@
               <li><span class="label">방문</span><span>왕궁, 올드타운, 와지엔키 공원</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0920">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="warsaw-front">숙소 제안</button>
             </div>
           </article>
@@ -708,6 +721,7 @@
               <li><span class="label">방문</span><span>오후 구시가지 관광</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0921">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="krakow">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0921">메모</button>
             </div>
@@ -721,6 +735,7 @@
               <li><span class="label">방문</span><span>비엘리치카 소금광산 (관광 루트, 영어 가이드 11:00 · <span class="booked">예약 완료</span>) + 오후 바벨성·카지미에시</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0922">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="krakow">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0922">메모</button>
             </div>
@@ -734,6 +749,7 @@
               <li><span class="label">방문</span><span>부다 왕궁 지구, 세체니 다리, 어부의 요새</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0923">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="budapest">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0923">메모</button>
             </div>
@@ -747,6 +763,7 @@
               <li><span class="label">방문</span><span>국회의사당, 세체니 온천, 다뉴브 야경 크루즈</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0924">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="budapest">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0924">메모</button>
             </div>
@@ -760,6 +777,7 @@
               <li><span class="label">방문</span><span>22시 전후 도착 — 국립공원 관광은 9/26 오전</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0925">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="plitvice">숙소 정보</button>
               <button type="button" class="stay-suggest" data-detail="d0925">메모</button>
             </div>
@@ -773,6 +791,7 @@
               <li><span class="label">방문</span><span>플리트비체 국립공원(오전), 해안도로 드라이브</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0926">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="split">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0926">메모</button>
             </div>
@@ -786,6 +805,7 @@
               <li><span class="label">방문</span><span>디오클레티아누스 궁전, 리바 해변, 트로기르(옵션)</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0927">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="split">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0927">메모</button>
             </div>
@@ -799,6 +819,7 @@
               <li><span class="label">방문</span><span>렌터카 반납 후 성벽 야경</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0928">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="dubrovnik">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0928">메모</button>
             </div>
@@ -812,6 +833,7 @@
               <li><span class="label">방문</span><span>성벽, 케이블카, 올드타운</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0929">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="dubrovnik">숙소 제안</button>
             </div>
           </article>
@@ -824,6 +846,7 @@
               <li><span class="label">방문</span><span>로크룸 섬 (페리 15분), 여유 일정</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v0930">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="dubrovnik">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d0930">메모</button>
             </div>
@@ -837,6 +860,7 @@
               <li><span class="label">방문</span><span>낮 두브로브니크 여유, 21:10 바르샤바 도착</span></li>
             </ul>
             <div class="day-card-actions">
+              <button type="button" class="stay-suggest" data-visit="v1001">방문 추천지</button>
               <button type="button" class="stay-suggest" data-stay="warsaw-back">숙소 제안</button>
               <button type="button" class="stay-suggest" data-detail="d1001">메모</button>
             </div>
@@ -1048,13 +1072,156 @@
         }
       };
 
+      // 2026-09-17 추가: 일자별 '방문 추천지' — 각 날짜의 도착/출발 시각·숙소 위치·가용 시간을 반영한 1차 추천안(제안). 최종은 현지 상황에 따라 조정.
+      var VISIT_RECS = {
+        "v0919": {
+          title: "9/19 (토) 바르샤바 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 14:05 도착 → 오후~저녁(반나절). 호텔(폴로니아 팰리스, 중앙역) 인근·구시가지 중심.</p>" +
+            "<ul>" +
+            "<li><strong>구시가지(Stare Miasto)</strong>: 왕궁 광장·지그문트 기둥·구시가지 광장·인어상. 저녁 산책 명소(호텔에서 트램/버스 약 15분).</li>" +
+            "<li><strong>노비 시비아트 거리</strong>: 호텔 도보권, 카페·저녁 식사에 좋은 번화가.</li>" +
+            "<li><strong>문화과학궁전 전망대</strong>: 호텔 바로 옆, 30층 전망대에서 시내 야경.</li>" +
+            "</ul>" +
+            "<p>도착 당일이라 무리 없이 구시가지 저녁 산책 + 거리 식사 정도를 추천합니다.</p>"
+        },
+        "v0920": {
+          title: "9/20 (일) 바르샤바 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 종일. (일요일이라 일부 상점 휴무 — 관광지는 정상)</p>" +
+            "<ul>" +
+            "<li><strong>바르샤바 왕궁(Royal Castle)</strong>: 구시가지 왕궁 내부 관람.</li>" +
+            "<li><strong>와지엔키 공원(Łazienki)</strong>: 쇼팽 동상·궁전·공작. 여름철 일요일 야외 쇼팽 콘서트는 9월 말 시즌 종료 여부 확인 필요.</li>" +
+            "<li><strong>신시가지·바르비칸</strong>, 퀴리 부인 박물관.</li>" +
+            "<li><strong>쇼팽 박물관</strong> 또는 <strong>코페르니쿠스 과학센터</strong>(체험형).</li>" +
+            "<li>(선택) <strong>빌라누프 궁전</strong> — 시 외곽, 반나절 코스.</li>" +
+            "</ul>"
+        },
+        "v0921": {
+          title: "9/21 (월) 크라쿠프 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 12:57 도착 → 오후~저녁(반나절). 호텔(그랜드 애스콧, 구시가지 서쪽) 도보권.</p>" +
+            "<ul>" +
+            "<li><strong>중앙광장(Rynek Główny)</strong>: 유럽 최대 중세 광장. <strong>성 마리아 성당</strong>(정시 나팔소리·비트 슈토스 제단), <strong>직물회관(Sukiennice)</strong>.</li>" +
+            "<li><strong>플로리안스카 거리·바르바칸·성 플로리안 문</strong>: 구시가지 북측 산책.</li>" +
+            "<li>저녁: <strong>카지미에시</strong>(유대인 지구) 산책·식사.</li>" +
+            "</ul>" +
+            "<p>바벨성은 9/22 오후에 배정되어 있습니다.</p>"
+        },
+        "v0922": {
+          title: "9/22 (화) 크라쿠프 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 오전 비엘리치카 소금광산(예약), 13:30~14:00 복귀 후 오후 자유.</p>" +
+            "<ul>" +
+            "<li><strong>바벨성 &amp; 대성당</strong>: 왕궁·대성당·종탑, 비스와강 언덕.</li>" +
+            "<li><strong>카지미에시 + 신들러 공장 박물관</strong>: 오스카 신들러 에나멜 공장(2차대전 전시). 시간대 지정권이라 사전 예약 권장.</li>" +
+            "<li><strong>리네크 지하 박물관</strong>: 중앙광장 지하 중세 크라쿠프 인터랙티브 전시.</li>" +
+            "</ul>" +
+            "<p>9/23 09:05 부다페스트행 항공이라 저녁은 일찍 마무리하세요.</p>"
+        },
+        "v0923": {
+          title: "9/23 (수) 부다페스트 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 10:05 도착 → 오후~저녁. 호텔(바실리크, 5구역 대성당 옆) 도보권.</p>" +
+            "<ul>" +
+            "<li><strong>부다 왕궁 지구</strong>: 어부의 요새·마차시 성당·부다 성 — 다뉴브·페스트 전망.</li>" +
+            "<li><strong>세체니 다리</strong> 도보, <strong>성 이슈트반 대성당</strong>(호텔 옆).</li>" +
+            "<li>저녁: <strong>겔레르트 언덕 야경</strong> 또는 다뉴브 강변 야경.</li>" +
+            "</ul>"
+        },
+        "v0924": {
+          title: "9/24 (목) 부다페스트 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 종일.</p>" +
+            "<ul>" +
+            "<li><strong>국회의사당</strong>: 내부 가이드 투어(사전 예약 권장).</li>" +
+            "<li><strong>세체니 온천</strong>: 오전이 한적 — 도심 최대 온천.</li>" +
+            "<li><strong>영웅광장·시민공원</strong>, 안드라시 거리(지하철 M1).</li>" +
+            "<li><strong>중앙시장(Great Market Hall)</strong>, 도하니 시나고그(유대인 지구).</li>" +
+            "<li>저녁: <strong>다뉴브 야경 크루즈</strong>(일몰 시간대 예약).</li>" +
+            "</ul>"
+        },
+        "v0925": {
+          title: "9/25 (금) 자그레브 → 플리트비체 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 이동일. 자그레브 17:25 도착 → 렌터카 18:00 → 그라보바츠 22시 전후. 관광 여유 최소.</p>" +
+            "<ul>" +
+            "<li>사실상 <strong>이동일</strong>이라 별도 관광은 어렵습니다. 오후 항공 도착 후 바로 남하하세요.</li>" +
+            "<li><strong>저녁거리·식료품 준비 권장</strong>: 플리트비체 인근(그라보바츠)은 밤에 식당이 제한적입니다.</li>" +
+            "<li>자그레브 구시가지(반 옐라치치 광장·성 마르크 성당)는 이번 동선상 생략 — 여유가 없습니다.</li>" +
+            "</ul>"
+        },
+        "v0926": {
+          title: "9/26 (토) 플리트비체 · 스플리트 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 오전 플리트비체 국립공원, 오후 스플리트 이동·도착.</p>" +
+            "<ul>" +
+            "<li><strong>플리트비체 국립공원(오전)</strong>: C 또는 H 코스(상·하부 호수 + 대폭포 + 보트·셔틀). 개장 직후 입장이 정체·더위 회피에 유리.</li>" +
+            "<li>스플리트 도착 후: <strong>리바(Riva) 해변 산책로</strong> 저녁, 숙소 근처 <strong>마르얀 언덕·베네 해변</strong> 일몰.</li>" +
+            "</ul>"
+        },
+        "v0927": {
+          title: "9/27 (일) 스플리트 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 종일. (9/28 오전까지 렌터카 보유)</p>" +
+            "<ul>" +
+            "<li><strong>디오클레티아누스 궁전(유네스코)</strong>: 페리스틸·지하궁전·성 도미니우스 대성당 종탑.</li>" +
+            "<li><strong>마르얀 언덕 트레킹</strong>: 숙소 근처, 전망·솔숲.</li>" +
+            "<li><strong>트로기르 당일치기</strong>: 차로 30분, 유네스코 구시가지 반나절 코스.</li>" +
+            "<li><strong>바치비체 해변</strong>, 리바 카페.</li>" +
+            "</ul>"
+        },
+        "v0928": {
+          title: "9/28 (월) 두브로브니크 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 오전 스플리트 출발 → 오후 도착·렌터카 반납. 저녁 위주.</p>" +
+            "<ul>" +
+            "<li><strong>올드타운 스트라둔 대로</strong> 저녁 산책, <strong>성벽 야경</strong>.</li>" +
+            "<li><strong>스르지산 케이블카</strong> 일몰 전망(도시·아드리아해).</li>" +
+            "</ul>" +
+            "<p>성벽 완주(2km)는 인파·더위가 덜한 9/29 오전 일찍을 권합니다.</p>"
+        },
+        "v0929": {
+          title: "9/29 (화) 두브로브니크 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 종일.</p>" +
+            "<ul>" +
+            "<li><strong>성벽 완주(City Walls, 2km)</strong>: 오전 일찍 — 도시·바다 파노라마.</li>" +
+            "<li><strong>올드타운</strong>: 렉터 궁전·스폰자 궁전·프란치스코 수도원(유럽에서 손꼽는 오래된 약국).</li>" +
+            "<li><strong>스르지산 케이블카</strong>, <strong>반예(Banje) 해변</strong>.</li>" +
+            "</ul>"
+        },
+        "v0930": {
+          title: "9/30 (수) 두브로브니크 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 종일. (렌터카 반납 후라 페리·버스·보트 이용)</p>" +
+            "<ul>" +
+            "<li><strong>로크룸 섬(Lokrum)</strong>: 구항구에서 페리 15분, 반나절 — 수도원·공작·수영.</li>" +
+            "<li><strong>엘라피티 제도 보트 투어</strong>(하루) 또는 올드타운·해변 여유.</li>" +
+            "<li>(선택) <strong>코토르(몬테네그로) 당일치기</strong>: 버스/투어, 왕복이 길어 로크룸+올드타운 여유가 더 편할 수 있음.</li>" +
+            "</ul>"
+        },
+        "v1001": {
+          title: "10/1 (목) 두브로브니크 오전 · 방문 추천지",
+          body:
+            "<p><strong>가용 시간</strong>: 오전~낮 두브로브니크 여유 → 저녁 항공(21:10 바르샤바 밤 도착, 바르샤바 관광은 없음).</p>" +
+            "<ul>" +
+            "<li><strong>올드타운 마무리</strong>: 못 본 골목·기념품·카페, 성벽/해변 재방문.</li>" +
+            "<li>오후 일찍 공항 이동(버스 약 30분) — 저녁 편 여유 확보.</li>" +
+            "</ul>" +
+            "<p>바르샤바는 밤 도착이라 휴식하고, 10/2 귀국을 준비하세요.</p>"
+        }
+      };
+
       var dialog = document.getElementById("stay-dialog");
       var dialogTitle = document.getElementById("stay-dialog-title");
       var dialogBody = document.getElementById("stay-dialog-body");
 
       document.querySelectorAll(".stay-suggest").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          var data = btn.hasAttribute("data-detail")
+          var data = btn.hasAttribute("data-visit")
+            ? VISIT_RECS[btn.getAttribute("data-visit")]
+            : btn.hasAttribute("data-detail")
             ? DAY_DETAILS[btn.getAttribute("data-detail")]
             : STAY_SUGGESTIONS[btn.getAttribute("data-stay")];
           if (!data) return;
