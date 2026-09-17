@@ -45,6 +45,7 @@
     - 2026-09-07 v40: 9/22 비엘리치카 소금광산 투어 예약 완료 반영 — 관광 루트, 영어 가이드 11:00, 2매. 아우슈비츠 생략 확정, 오후는 바벨성·카지미에시(+α). 카드·메모·롤업 갱신
     - 2026-09-17 v41: 일자별 카드에 '방문 추천지' 버튼·레이어 팝업 추가 — 각 날짜의 도착/출발 시각·숙소 위치·가용 시간을 반영한 도시별 추천지(제안). 9/19~10/1 13개 카드
     - 2026-09-17 v42: 숙소 예약 완료에 맞춰 버튼 라벨 '숙소 제안' → '숙소 정보'로 통일(12→0), 데일리 섹션 안내문도 반영
+    - 2026-09-17 v43: '사진' 섹션 제거, 그 자리에 '화폐·결제' 섹션 신규 추가(나라별 화폐·환율·결제 팁). 네비 '사진'→'화폐'
 -->
 <html lang="ko">
 <head>
@@ -437,27 +438,6 @@
       color: var(--muted);
     }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .photo-slot {
-      display: flex;
-      min-height: 180px;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      border: 1px dashed rgba(45, 106, 95, 0.5);
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(215, 230, 237, 0.9), rgba(255, 253, 248, 0.62));
-      color: var(--muted);
-      text-align: center;
-      font-size: 14px;
-    }
-
     /* 2026-07-13 추가: 일자별 카드 섹션 (참고 카드 UI — 둥근 모서리·소프트 섀도우·상단 배지·호버 상승) */
     .day-cards {
       display: grid;
@@ -605,10 +585,6 @@
         align-items: flex-start;
         flex-direction: column;
       }
-
-      .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 560px) {
@@ -631,10 +607,6 @@
         grid-template-columns: 1fr;
         gap: 4px;
       }
-
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -645,7 +617,7 @@
       <nav class="nav-links" aria-label="여행 기록 바로가기">
         <a href="#plan">계획</a>
         <a href="#daily">일정</a>
-        <a href="#photos">사진</a>
+        <a href="#money">화폐</a>
         <a href="#comments">댓글</a>
         <a href="/">홈</a>
       </nav>
@@ -881,20 +853,38 @@
         </div>
       </section>
 
-      <section class="section" id="photos" aria-labelledby="photos-title">
+      <!-- 2026-09-17 추가: 화폐·결제 안내 (사진 섹션 대체). 방문 3개국 화폐가 서로 다름 -->
+      <section class="section" id="money" aria-labelledby="money-title">
         <div class="section-header">
-          <h2 id="photos-title">사진</h2>
-          <p class="section-note">현재는 사진 자리만 준비했습니다. 여행 후 대표 사진을 추가할 예정입니다.</p>
+          <h2 id="money-title">화폐·결제</h2>
+          <p class="section-note">방문 3개국은 화폐가 다릅니다(크로아티아만 유로). 카드 결제 위주로 준비하세요.</p>
         </div>
-        <div class="photo-grid">
-          <div class="photo-slot">바르샤바 올드타운</div>
-          <div class="photo-slot">크라쿠프 구시가지</div>
-          <div class="photo-slot">부다페스트 야경</div>
-          <div class="photo-slot">플리트비체 국립공원</div>
-          <div class="photo-slot">스플리트 해안</div>
-          <div class="photo-slot">두브로브니크 성벽</div>
-          <div class="photo-slot">음식과 카페 기록</div>
-          <div class="photo-slot">여행 중 가장 좋았던 순간</div>
+        <div class="grid">
+          <article class="card">
+            <h3>나라별 화폐</h3>
+            <ul>
+              <li>폴란드(바르샤바·크라쿠프): <strong>즈워티</strong> (zł / PLN) — 유로 아님</li>
+              <li>헝가리(부다페스트): <strong>포린트</strong> (Ft / HUF) — 유로 아님</li>
+              <li>크로아티아(플리트비체·스플리트·두브로브니크): <strong>유로</strong> (€ / EUR, 2023년 도입)</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>대략 환율 (변동 · 확인 필요)</h3>
+            <ul>
+              <li>1 PLN ≈ 약 385원</li>
+              <li>1 EUR ≈ 약 1,500~1,600원</li>
+              <li>1 HUF ≈ 약 3.8~4원 (단위가 작아 금액에 0이 많음)</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>결제 팁</h3>
+            <ul>
+              <li>세 나라 모두 카드 결제가 보편적(비접촉·삼성/애플페이) — 대부분 카드로 해결</li>
+              <li>유로는 크로아티아에서만 공식 통화 — 폴란드·헝가리는 현지 화폐(PLN·HUF) 사용 권장</li>
+              <li>현금은 소액만(팁·재래시장·소도시). ATM 현지통화 인출 또는 트래블카드</li>
+              <li>DCC 주의: 단말기의 '원화(KRW) 결제' 제안은 거절 → 현지 통화로 결제(수수료 이득)</li>
+            </ul>
+          </article>
         </div>
       </section>
 
