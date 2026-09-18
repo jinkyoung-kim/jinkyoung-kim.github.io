@@ -47,6 +47,7 @@
     - 2026-09-17 v42: 숙소 예약 완료에 맞춰 버튼 라벨 '숙소 제안' → '숙소 정보'로 통일(12→0), 데일리 섹션 안내문도 반영
     - 2026-09-17 v43: '사진' 섹션 제거, 그 자리에 '화폐·결제' 섹션 신규 추가(나라별 화폐·환율·결제 팁). 네비 '사진'→'화폐'
     - 2026-09-17 v44: 현장 결제 필요 숙소 표시(.onsite) — 폴로니아 팰리스(9/19~20)·하우스 티나(9/25). 카드 숙소 행·팝업·메모에 '현장 결제' 명시
+    - 2026-09-18 v45: '언어' 안내 섹션 추가(간단 카드) — 나라별 공식 언어·기본 인사말·영어 통용·번역앱 팁. 네비 '언어' 추가
 -->
 <html lang="ko">
 <head>
@@ -625,6 +626,7 @@
         <a href="#plan">계획</a>
         <a href="#daily">일정</a>
         <a href="#money">화폐</a>
+        <a href="#lang">언어</a>
         <a href="#comments">댓글</a>
         <a href="/">홈</a>
       </nav>
@@ -893,6 +895,23 @@
             </ul>
           </article>
         </div>
+      </section>
+
+      <!-- 2026-09-18 추가: 언어 안내 (간단 카드) -->
+      <section class="section" id="lang" aria-labelledby="lang-title">
+        <div class="section-header">
+          <h2 id="lang-title">언어</h2>
+          <p class="section-note">나라별 공식 언어가 다릅니다. 관광지·호텔은 영어가 대체로 통합니다.</p>
+        </div>
+        <article class="card">
+          <h3>나라별 언어</h3>
+          <ul>
+            <li><strong>폴란드</strong>: 폴란드어 — Dzień dobry(안녕) / Dziękuję(감사)</li>
+            <li><strong>헝가리</strong>: 헝가리어 — Jó napot(안녕) / Köszönöm(감사)</li>
+            <li><strong>크로아티아</strong>: 크로아티아어 — Dobar dan(안녕) / Hvala(감사)</li>
+            <li>관광 도시·호텔·젊은 층은 영어 원활, 택시·재래시장·소도시는 제한적. 구글 번역·파파고에 3개국 오프라인 언어팩·카메라 번역 준비 권장.</li>
+          </ul>
+        </article>
       </section>
 
       <!-- 2026-07-08 추가: 댓글 영역 (giscus — GitHub Discussions 기반, 파일 첨부 가능) -->
